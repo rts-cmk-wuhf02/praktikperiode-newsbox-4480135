@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+.primary-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.seconary-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.section-heading {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.sub-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+
+.card-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-copy {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.body-copy {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+.message-time-stamp {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+
+/*
+https://fonts.google.com/specimen/Barlow+Condensed?preview.text=THE+QUICK+BROWN+FOX+JUMPS+OVER+THE+LAZY+DOG&preview.text_type=custom
+*/

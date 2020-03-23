@@ -1,0 +1,16 @@
+<%- include("../partials/head-start") -%>
+
+    <link rel="stylesheet" href="/assets/css/index.css">
+
+<%- include("../partials/head-end") -%>
+
+    <%- include("../partials/header", {title: "Newsbox", showSettings: true, showBack: false}) -%>
+    <%- include("../partials/search-bar") -%>
+
+    <%- include("../partials/category-dropdown", {title: "Health"}) -%>
+    <%- include("../partials/news-item") -%>
+    
+    <%- include("../partials/category-dropdown", {title: "Sport"}) -%>
+    <%- include("../partials/category-dropdown", {title: "Travel"}) -%>
+
+<%- include("../partials/body-end") -%>

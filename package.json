@@ -1,0 +1,39 @@
+{
+  "name": "newsbox",
+  "version": "1.0.0",
+  "description": "I denne praktikperiode skal I udvikle en nyheds webapplikation som er optimeret til den mobile skærm. I applikationen skal der listes nyheder fra The New York Times i et kategoriseret nyhedsoverblik. Det skal være muligt at vælge(klikke på) en nyhed i listen, hvorefter brugeren vil blive sendt videre til den fulde artikkel på nytimes.com.<br><br>\r Nyhedsartikkeler skal også kunne gemmes i et privat nyhedsarkiv. Gem funktionen bliver synlig når der swipes til venstre [se illustration](https://github.com/rts-cmk-opgaver/praktik-projekt-newsbox/blob/master/assets/swipe-illustration.png \"swipe illustration\") på en nyhed. Fra det private nyhedsarkiv kan ligeledes tilgås artikler og artikler kan slettes. Slet funktionen bliver synlig når der swipes til venstre [se illustration](https://github.com/rts-cmk-opgaver/praktik-projekt-newsbox/blob/master/assets/swipe-illustration.png \"swipe illustration\") på en arkiveret nyhed.<br><br>\r Fra settings panelet skal brugeren have mulighed for at administrere det kategoriseret nyhedsoverblik ved at slå visning til eller fra for nyhedskategorier. Fra settings panelet skal brugeren også kunne skifte mellem lyst og mørkt tema fra settings panelt.\r <br>\r <br>\r **Varighed:**<br>\r Praktik projektet skal seneste være færdigt og afleveret fredag d. 17/4 kl. 13:40.<br>\r Før projektet startes vil jeg gerne høre jeres individuelle bud på, hvor længe i forventer at skulle bruge og hvordan i er kommet frem til dette estimat. I kan med fordel Google jer frem til hvordan man estimere bedst muligt.",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@fortawesome/fontawesome-free": "^5.12.1",
+    "animate.css": "^3.7.2",
+    "animejs": "^3.1.0",
+    "autoprefixer": "^9.7.4",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-ejs": "^5.0.0",
+    "gulp-minify": "^3.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "postcss-import": "^12.0.1",
+    "tailwindcss": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rts-cmk-wuhf02/praktikperiode-newsbox-4480135.git"
+  },
+  "author": "MadCreativity",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rts-cmk-wuhf02/praktikperiode-newsbox-4480135/issues"
+  },
+  "homepage": "https://github.com/rts-cmk-wuhf02/praktikperiode-newsbox-4480135#readme"
+}
