@@ -1,0 +1,1 @@
+"use strict";"true"==sessionStorage.getItem("dark-mode")&&document.body.classList.add("dark-mode");

@@ -1,0 +1,33 @@
+@import "base.css";
+
+.settings-container {
+    border-radius: 1.5rem;
+}
+
+.option-wrapper {
+    @apply flex items-center justify-between h-24 py-6 px-8 w-full uppercase border-b border-gray-600;
+}
+
+
+.option-wrapper:last-child {
+    @apply border-0;
+}
+
+.toggle-input {
+    @apply rounded-full bg-gray-200 h-full w-20 relative;
+    transition: background-color 0.5s ease;
+}
+
+.toggle-input-circle {
+    @apply transform rounded-full shadow-2xl bg-white absolute h-10 w-10 inset-y-0 left-0 m-1;
+    transition: transform 0.5s ease;
+}
+
+
+:checked ~ label .toggle-input {
+    @apply bg-teal-500;
+}
+
+:checked ~ label .toggle-input .toggle-input-circle {
+    @apply translate-x-8;
+}

@@ -5942,15 +5942,3 @@ html, body {
   vertical-align: bottom;
   line-height: 1;
 }
-
-.news-item-body::after {
-  content: "...";
-  position: absolute;
-  bottom: 0.2em;
-  right: 0.2em;
-}
-
-.category-dropdown-wrapper .dropdown-content {
-  height: 0;
-  overflow: hidden;
-}

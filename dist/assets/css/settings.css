@@ -5943,14 +5943,64 @@ html, body {
   line-height: 1;
 }
 
-.news-item-body::after {
-  content: "...";
-  position: absolute;
-  bottom: 0.2em;
-  right: 0.2em;
+.settings-container {
+  border-radius: 1.5rem;
 }
 
-.category-dropdown-wrapper .dropdown-content {
-  height: 0;
-  overflow: hidden;
+.option-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  width: 100%;
+  text-transform: uppercase;
+  border-bottom-width: 1px;
+  border-color: #718096;
+}
+
+.option-wrapper:last-child {
+  border-width: 0;
+}
+
+.toggle-input {
+  border-radius: 9999px;
+  background-color: #edf2f7;
+  height: 100%;
+  width: 5rem;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+.toggle-input-circle {
+  --transform-translate-x: 0;
+  --transform-translate-y: 0;
+  --transform-rotate: 0;
+  --transform-skew-x: 0;
+  --transform-skew-y: 0;
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+  transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+  border-radius: 9999px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  position: absolute;
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0.25rem;
+  transition: transform 0.5s ease;
+}
+
+:checked ~ label .toggle-input {
+  background-color: #38b2ac;
+}
+
+:checked ~ label .toggle-input .toggle-input-circle {
+  --transform-translate-x: 2rem;
 }

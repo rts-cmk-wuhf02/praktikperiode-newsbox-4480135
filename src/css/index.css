@@ -1,27 +1,13 @@
-@import "fonts.css";
-@import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
-@import "@fortawesome/fontawesome-free/css/solid.min.css";
+@import "base.css";
 
-html, body {
-    font-size: 32px;
-}
-
-.nav-icon {
-    @apply text-3xl align-bottom leading-none;
-}
-
-.card-copy::after {
+.news-item-body::after {
     content: "...";
     position: absolute;
     bottom: 0.2em;
     right: 0.2em;
 }
 
-
-@import "tailwindcss/base";
-
-
-@import "tailwindcss/components";
-
-
-@import "tailwindcss/utilities";
+.category-dropdown-wrapper .dropdown-content {
+    height: 0;
+    overflow: hidden;
+}

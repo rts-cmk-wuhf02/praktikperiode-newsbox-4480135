@@ -1,7 +1,7 @@
 <header class="w-full border-solid border-b border-gray-600 h-32 flex justify-between items-end p-8 pt-4 bg-white">
     <div class="nav-left w-10">
         <% if(showBack) { %>
-            <a href="/" class="nav-icon nav-icon-back"><i class="fas fa-chevron-left"></i></a>
+            <a href="javascript:history.back();" class="nav-icon nav-icon-back"><i class="fas fa-chevron-left"></i></a>
         <% } else { %>
             <a href="/archive" class="nav-icon nav-icon-archive"><i class="fas fa-inbox"></i></a>
         <% } %>

@@ -10,6 +10,16 @@ const connect = require("gulp-connect");
 const babel = require("gulp-babel");
 
 
+const localJSExtensions = [
+    "./node_modules/animejs/lib/anime.min.js"
+];
+
+const localCSSExtensions = [
+    "./node_modules/animate.css/animate.min.css"
+];
+
+
+
 function html(next) {
     gulp.src("./src/html/templates/**/*.ejs")
         .pipe(ejs().on("error", err => { console.error(err); }))
@@ -38,8 +48,8 @@ function images(next) {
 function css(next) {
     gulp.src("./src/css/**/*.css")
         .pipe(postcss([
-            tailwindcss,
             postcssimport,
+            tailwindcss,
             autoprefixer,
         ]))
         .pipe(gulp.dest("./dist/assets/css"))
@@ -65,6 +75,28 @@ function js(next) {
     next();
 }
 
+function assets(next) {
+    gulp.src("./src/assets/**/*")
+        .pipe(gulp.dest("./dist/assets"))
+        .pipe(connect.reload());
+    
+    next();
+}
+
+function copyJSExtensions(next) {
+    gulp.src(localJSExtensions)
+        .pipe(gulp.dest("./dist/assets/js"));
+
+    next();
+}
+
+function copyCSSExtensions(next) {
+    gulp.src(localCSSExtensions)
+        .pipe(gulp.dest("./dist/assets/css"));
+
+    next();
+}
+
 
 // Watchers
 function watchHtml() {
@@ -83,12 +115,19 @@ function watchJs() {
     gulp.watch("./src/js/**/*.js", { ignoreInitial: false }, js);
 }
 
+function watchAssets() {
+    gulp.watch("./src/assets/**/*", { ignoreInitial: false }, assets);
+}
+
 
 gulp.task("dev", function(next) {
     watchHtml();
     watchImages();
     watchCss();
     watchJs();
+    watchAssets();
+    copyJSExtensions(next);
+    copyCSSExtensions(next);
     
     connect.server({
         livereload: true,
@@ -103,6 +142,9 @@ gulp.task("build", function(next) {
     images(next);
     css(next);
     js(next);
+    assets(next);
+    copyJSExtensions(next);
+    copyCSSExtensions(next);
     
     
     next();

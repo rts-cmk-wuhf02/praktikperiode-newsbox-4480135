@@ -1,5 +1,7 @@
 <%- include("../partials/head-start") -%>
 
+    <link rel="stylesheet" href="/assets/css/animate.min.css">
+    <link rel="stylesheet" href="/assets/css/tailwind.css">
     <link rel="stylesheet" href="/assets/css/index.css">
 
 <%- include("../partials/head-end") -%>
@@ -7,10 +9,12 @@
     <%- include("../partials/header", {title: "Newsbox", showSettings: true, showBack: false}) -%>
     <%- include("../partials/search-bar") -%>
 
-    <%- include("../partials/category-dropdown", {title: "Health"}) -%>
-    <%- include("../partials/news-item") -%>
-    
-    <%- include("../partials/category-dropdown", {title: "Sport"}) -%>
-    <%- include("../partials/category-dropdown", {title: "Travel"}) -%>
+    <%- include("../partials/category-dropdown") -%>
+    <%- include("../partials/category-dropdown") -%>
+    <%- include("../partials/category-dropdown") -%>
+
+
+    <script src="/assets/js/anime.min.js"></script>
+    <script src="/assets/js/category-dropdown.js"></script>
 
 <%- include("../partials/body-end") -%>
