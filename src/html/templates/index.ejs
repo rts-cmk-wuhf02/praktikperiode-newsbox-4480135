@@ -1,6 +1,5 @@
 <%- include("../partials/head-start") -%>
 
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
     <link rel="stylesheet" href="/assets/css/tailwind.css">
     <link rel="stylesheet" href="/assets/css/index.css">
 
@@ -10,15 +9,15 @@
     <%- include("../partials/search-bar") -%>
 
     <div class="dropdown-container">
-        <%- include("../partials/category-dropdown") -%>
-        <%- include("../partials/category-dropdown") -%>
-        <%- include("../partials/category-dropdown") -%>
-        <%- include("../partials/category-dropdown") -%>
-        <%- include("../partials/category-dropdown") -%>
+        
     </div>
 
 
     <script src="/assets/js/anime.min.js"></script>
     <script src="/assets/js/category-dropdown.js"></script>
+    
+    <template id="template-category-dropdown">
+        <%- include("../partials/category-dropdown", { showTrashButton: false }) -%>
+    </template>
 
 <%- include("../partials/body-end") -%>

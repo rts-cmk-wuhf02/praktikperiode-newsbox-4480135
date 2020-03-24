@@ -66,6 +66,18 @@ dropdownContainerDOM.addEventListener("touchstart", function(e) {
 
 dropdownContainerDOM.addEventListener("touchend", function(e) {
     if(startPosX - 20 > e.changedTouches[0].screenX && e.changedTouches[0].screenY >= startPosY - 50 && e.changedTouches[0].screenY <= startPosY + 50) {
-        console.log("Swiped left on ", trackedPath);
+        for(let i = 0; i < trackedPath.length; i++) {
+            if(trackedPath[i].classList != undefined && trackedPath[i].classList.contains("news-item")) {
+                trackedPath[i].style.transform = "translateX(-9rem)";
+                break;
+            }
+        }
+    } else if(startPosX + 20 < e.changedTouches[0].screenX && e.changedTouches[0].screenY >= startPosY - 50 && e.changedTouches[0].screenY <= startPosY + 50) {
+        for(let i = 0; i < trackedPath.length; i++) {
+            if(trackedPath[i].classList != undefined && trackedPath[i].classList.contains("news-item")) {
+                trackedPath[i].style.transform = "translateX(0)";
+                break;
+            }
+        }
     }
 }, true);

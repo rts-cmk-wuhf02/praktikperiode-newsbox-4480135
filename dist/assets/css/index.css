@@ -5943,11 +5943,28 @@ html, body {
   line-height: 1;
 }
 
+.news-item {
+  transition: transform 0.5s ease;
+}
+
 .news-item-body::after {
   content: "...";
   position: absolute;
   bottom: 0.2em;
   right: 0.2em;
+}
+
+.news-item-button {
+  flex: none;
+  width: 8rem;
+  padding: 0.5rem;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  color: #fff;
+  font-size: 1.5rem;
 }
 
 .category-dropdown-wrapper .dropdown-content {

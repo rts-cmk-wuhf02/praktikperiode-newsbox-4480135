@@ -2,13 +2,12 @@
 <html lang="en">
     <head>
         
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
     <link rel="stylesheet" href="/assets/css/tailwind.css">
     <link rel="stylesheet" href="/assets/css/index.css">
 
 </head>
 <body class="bg-gray-200">
-    <header class="w-full border-solid border-b border-gray-600 h-32 flex justify-between items-end p-8 pt-4 bg-white">
+    <header class="w-full border-solid border-b border-gray-600 h-32 flex justify-between items-end p-8 pt-4 bg-white sticky top-0 z-50">
     <div class="nav-left w-10">
         
             <a href="/archive" class="nav-icon nav-icon-archive"><i class="fas fa-inbox"></i></a>
@@ -29,6 +28,14 @@
     </div>
 </section>
     <div class="dropdown-container">
+        
+    </div>
+
+
+    <script src="/assets/js/anime.min.js"></script>
+    <script src="/assets/js/category-dropdown.js"></script>
+    
+    <template id="template-category-dropdown">
         <article class="category-dropdown-wrapper">
     <section class="category-dropdown w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden">
         <div class="flex items-center">
@@ -41,124 +48,21 @@
         <i class="dropdown-arrow fas fa-chevron-right text-3xl"></i>
     </section>
     <div class="dropdown-content">
-        <article class="w-full bg-white flex border-b border-gray-600">
-    <div class="w-full flex flex-none p-2">
+        <article class="news-item w-full bg-white flex border-b border-gray-600">
+    <a href="https://www.nytimes.com/" class="w-full flex flex-none p-2">
         <img class="news-item-icon rounded-full w-32 h-32 p-4 flex-none" src="https://randomuser.me/api/portraits/women/17.jpg">
 
         <div class="ml-4 h-full py-4">
             <p class="news-item-headline card-title">Headline</p>
             <p class="news-item-body card-copy relative h-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
         </div>
-    </div>
-
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-blue-400 text-white text-2xl"><i class="fas fa-inbox"></i></button>
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-red-400 text-white text-2xl"><i class="fas fa-trash"></i></button>
-</article>    </div>
-</article>        <article class="category-dropdown-wrapper">
-    <section class="category-dropdown w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden">
-        <div class="flex items-center">
-            <div class="bg-white shadow-2xl rounded-full w-12 h-12 flex justify-center items-center">
-                <i class="fas fa-broadcast-tower"></i>
-            </div>
-            <p class="dropdown-title ml-4 card-title uppercase">Title</p>
-        </div>
+    </a>
+ 
     
-        <i class="dropdown-arrow fas fa-chevron-right text-3xl"></i>
-    </section>
-    <div class="dropdown-content">
-        <article class="w-full bg-white flex border-b border-gray-600">
-    <div class="w-full flex flex-none p-2">
-        <img class="news-item-icon rounded-full w-32 h-32 p-4 flex-none" src="https://randomuser.me/api/portraits/women/17.jpg">
-
-        <div class="ml-4 h-full py-4">
-            <p class="news-item-headline card-title">Headline</p>
-            <p class="news-item-body card-copy relative h-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
-        </div>
-    </div>
-
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-blue-400 text-white text-2xl"><i class="fas fa-inbox"></i></button>
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-red-400 text-white text-2xl"><i class="fas fa-trash"></i></button>
-</article>    </div>
-</article>        <article class="category-dropdown-wrapper">
-    <section class="category-dropdown w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden">
-        <div class="flex items-center">
-            <div class="bg-white shadow-2xl rounded-full w-12 h-12 flex justify-center items-center">
-                <i class="fas fa-broadcast-tower"></i>
-            </div>
-            <p class="dropdown-title ml-4 card-title uppercase">Title</p>
-        </div>
+        <button class="news-item-button button-archive bg-blue-500"><i class="fas fa-inbox"></i></button>
     
-        <i class="dropdown-arrow fas fa-chevron-right text-3xl"></i>
-    </section>
-    <div class="dropdown-content">
-        <article class="w-full bg-white flex border-b border-gray-600">
-    <div class="w-full flex flex-none p-2">
-        <img class="news-item-icon rounded-full w-32 h-32 p-4 flex-none" src="https://randomuser.me/api/portraits/women/17.jpg">
-
-        <div class="ml-4 h-full py-4">
-            <p class="news-item-headline card-title">Headline</p>
-            <p class="news-item-body card-copy relative h-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
-        </div>
-    </div>
-
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-blue-400 text-white text-2xl"><i class="fas fa-inbox"></i></button>
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-red-400 text-white text-2xl"><i class="fas fa-trash"></i></button>
 </article>    </div>
-</article>        <article class="category-dropdown-wrapper">
-    <section class="category-dropdown w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden">
-        <div class="flex items-center">
-            <div class="bg-white shadow-2xl rounded-full w-12 h-12 flex justify-center items-center">
-                <i class="fas fa-broadcast-tower"></i>
-            </div>
-            <p class="dropdown-title ml-4 card-title uppercase">Title</p>
-        </div>
-    
-        <i class="dropdown-arrow fas fa-chevron-right text-3xl"></i>
-    </section>
-    <div class="dropdown-content">
-        <article class="w-full bg-white flex border-b border-gray-600">
-    <div class="w-full flex flex-none p-2">
-        <img class="news-item-icon rounded-full w-32 h-32 p-4 flex-none" src="https://randomuser.me/api/portraits/women/17.jpg">
-
-        <div class="ml-4 h-full py-4">
-            <p class="news-item-headline card-title">Headline</p>
-            <p class="news-item-body card-copy relative h-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
-        </div>
-    </div>
-
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-blue-400 text-white text-2xl"><i class="fas fa-inbox"></i></button>
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-red-400 text-white text-2xl"><i class="fas fa-trash"></i></button>
-</article>    </div>
-</article>        <article class="category-dropdown-wrapper">
-    <section class="category-dropdown w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden">
-        <div class="flex items-center">
-            <div class="bg-white shadow-2xl rounded-full w-12 h-12 flex justify-center items-center">
-                <i class="fas fa-broadcast-tower"></i>
-            </div>
-            <p class="dropdown-title ml-4 card-title uppercase">Title</p>
-        </div>
-    
-        <i class="dropdown-arrow fas fa-chevron-right text-3xl"></i>
-    </section>
-    <div class="dropdown-content">
-        <article class="w-full bg-white flex border-b border-gray-600">
-    <div class="w-full flex flex-none p-2">
-        <img class="news-item-icon rounded-full w-32 h-32 p-4 flex-none" src="https://randomuser.me/api/portraits/women/17.jpg">
-
-        <div class="ml-4 h-full py-4">
-            <p class="news-item-headline card-title">Headline</p>
-            <p class="news-item-body card-copy relative h-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
-        </div>
-    </div>
-
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-blue-400 text-white text-2xl"><i class="fas fa-inbox"></i></button>
-    <button class="flex-none w-32 p-2 h-32 bg-cyan-400 flex justify-center items-center box-content bg-red-400 text-white text-2xl"><i class="fas fa-trash"></i></button>
-</article>    </div>
-</article>    </div>
-
-
-    <script src="/assets/js/anime.min.js"></script>
-    <script src="/assets/js/category-dropdown.js"></script>
+</article>    </template>
 
         <script src="/assets/js/dark-mode.js"></script>
     </body>
