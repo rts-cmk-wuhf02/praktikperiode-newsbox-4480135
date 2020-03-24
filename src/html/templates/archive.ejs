@@ -13,11 +13,17 @@
     </div>
 
 
-    <script src="/assets/js/anime.min.js"></script>
-    <script src="/assets/js/category-dropdown.js"></script>
-
     <template id="template-category-dropdown">
-        <%- include("../partials/category-dropdown", { showTrashButton: true }) -%>
+        <%- include("../partials/category-dropdown") -%>
     </template>
+
+    <template id="template-news-item">
+        <%- include("../partials/news-item", {showTrashButton: true}) -%>
+    </template>
+
+    
+    <script src="/assets/js/anime.min.js"></script>
+    <script src="/assets/js/archive.js"></script>
+    <script src="/assets/js/category-dropdown.js"></script>
 
 <%- include("../partials/body-end") -%>

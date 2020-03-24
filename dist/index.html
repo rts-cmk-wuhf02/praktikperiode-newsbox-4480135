@@ -32,9 +32,6 @@
     </div>
 
 
-    <script src="/assets/js/anime.min.js"></script>
-    <script src="/assets/js/category-dropdown.js"></script>
-    
     <template id="template-category-dropdown">
         <article class="category-dropdown-wrapper">
     <section class="category-dropdown w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden">
@@ -48,21 +45,30 @@
         <i class="dropdown-arrow fas fa-chevron-right text-3xl"></i>
     </section>
     <div class="dropdown-content">
+        
+    </div>
+</article>    </template>
+
+    <template id="template-news-item">
         <article class="news-item w-full bg-white flex border-b border-gray-600">
-    <a href="https://www.nytimes.com/" class="w-full flex flex-none p-2">
+    <a href="https://www.nytimes.com/" class="news-item-link w-full flex flex-none p-2">
         <img class="news-item-icon rounded-full w-32 h-32 p-4 flex-none" src="https://randomuser.me/api/portraits/women/17.jpg">
 
         <div class="ml-4 h-full py-4">
             <p class="news-item-headline card-title">Headline</p>
-            <p class="news-item-body card-copy relative h-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
+            <p class="news-item-body card-copy relative mh-16 pr-4 overflow-hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptates iusto ea quae, rem voluptatibus aut facilis expedita omnis explicabo.</p>
         </div>
     </a>
  
     
         <button class="news-item-button button-archive bg-blue-500"><i class="fas fa-inbox"></i></button>
     
-</article>    </div>
 </article>    </template>
+
+
+    <script src="/assets/js/anime.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/category-dropdown.js"></script>
 
         <script src="/assets/js/dark-mode.js"></script>
     </body>

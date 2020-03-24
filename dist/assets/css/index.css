@@ -5950,8 +5950,8 @@ html, body {
 .news-item-body::after {
   content: "...";
   position: absolute;
-  bottom: 0.2em;
-  right: 0.2em;
+  bottom: 0;
+  right: 0;
 }
 
 .news-item-button {
