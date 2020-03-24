@@ -1,3 +1,4 @@
+// Dropdown
 const categoryDropdownDOM = document.querySelectorAll(".category-dropdown");
 
 categoryDropdownDOM.forEach(function(e) {
@@ -46,3 +47,25 @@ categoryDropdownDOM.forEach(function(e) {
         }
     });
 });
+
+
+// News item drag
+const newsItemsDOM = document.querySelectorAll(".news-item");
+const dropdownContainerDOM = document.querySelector(".dropdown-container");
+
+
+let startPosX = 0;
+let startPosY = 0;
+let trackedPath = [];
+
+dropdownContainerDOM.addEventListener("touchstart", function(e) {
+    startPosX = e.touches[0].screenX;
+    startPosY = e.touches[0].screenY;
+    trackedPath = e.path;
+}, true);
+
+dropdownContainerDOM.addEventListener("touchend", function(e) {
+    if(startPosX - 20 > e.changedTouches[0].screenX && e.changedTouches[0].screenY >= startPosY - 50 && e.changedTouches[0].screenY <= startPosY + 50) {
+        console.log("Swiped left on ", trackedPath);
+    }
+}, true);
