@@ -30,6 +30,9 @@ archivedNews.forEach(function(e) {
     }
 
     dropdownContainerDOM.appendChild(dropdownClone);
+    let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
+
+    addDropdownListener(element);
 });
 
 

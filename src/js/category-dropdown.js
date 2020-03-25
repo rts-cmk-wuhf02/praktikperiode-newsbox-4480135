@@ -1,7 +1,6 @@
 function addDropdownListener(dropdown) {
     // Dropdown
-    dropdown.addEventListener("click", function(e) {
-        console.log("clicked")
+    dropdown.querySelector(".category-dropdown").addEventListener("click", function(e) {
         const compPath = e.composedPath();
         for(let i = 0; i < compPath.length; i++) {
             if(compPath[i].classList.contains("category-dropdown"))  {

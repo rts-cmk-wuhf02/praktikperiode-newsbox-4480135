@@ -115,14 +115,15 @@ function showData(data) {
     const dropdownClone = templateCategoryDropdownDOM.content.cloneNode(true);
     const dropdownContentCloneElement = dropdownClone.querySelector(".dropdown-content");
 
-    dropdownClone.querySelector(".dropdown-title").innerText = jsonData.rss.channel.title.split("&gt;")[jsonData.rss.channel.title.split("&gt;").length - 1];
+    const categoryTitle = jsonData.rss.channel.title.split("&gt; ")[jsonData.rss.channel.title.split("&gt; ").length - 1];
+    dropdownClone.querySelector(".dropdown-title").innerText = categoryTitle;
     
     let items = jsonData.rss.channel.item;
     for(let i = 0; i < items.length; i++) {
         const itemClone = templateNewsItemDOM.content.cloneNode(true);
         // Needed for removal
-        itemClone.querySelector(".news-item").setAttribute("data-id", i);
-        itemClone.querySelector(".news-item").setAttribute("data-category", items.title);
+        itemClone.querySelector(".news-item").setAttribute("data-guid", items[i].guid.text);
+        itemClone.querySelector(".news-item").setAttribute("data-category", categoryTitle);
 
         // Visual information
         itemClone.querySelector(".news-item-headline").innerText = items[i].title;
@@ -142,24 +143,64 @@ function showData(data) {
 
 
 
-    const archiveButtonDOM = element.querySelector(".button-archive");
+    const archiveButtonDOM = element.querySelectorAll(".button-archive");
 
-    archiveButtonDOM.addEventListener("click", function(e) {
-        const compPath = e.composedPath();
-
-        for(let i = 0; i < compPath.length; i++) {
-            if(compPath[i].classList.contains("news-item")) {
-                let newArchivedNews = [];
-                if(localStorage.getItem("archived-news")) newArchivedNews = localStorage.getItem("archived-news");
-
-
-                // Add to archived news
-
-
-
-                localStorage.setItem("archived-news", JSON.stringify(newArchivedNews));
-                break;
+    archiveButtonDOM.forEach(function(e) {
+        e.addEventListener("click", function(e) {
+            const compPath = e.composedPath();
+            
+            for(let i = 0; i < compPath.length; i++) {
+                if(compPath[i].classList.contains("news-item")) {
+                    compPath[i].style.transform = "translateX(0)";
+                    let newArchivedNews = [];
+                    if(localStorage.getItem("archived-news")) newArchivedNews = JSON.parse(localStorage.getItem("archived-news"));
+                    
+                    
+                    // Add to archived news
+                    const categoryTitle = compPath[i].getAttribute("data-category");
+                    const itemGuid = compPath[i].getAttribute("data-guid");
+                    
+                    let foundCategory = false;
+                    
+                    for(let j = 0; j < newArchivedNews.length; j++) {
+                        if(newArchivedNews[j].title === categoryTitle) {
+                            console.log("found")
+                            if(newArchivedNews[j].items.find(function(e) {
+                                return e.guid === itemGuid;
+                            }) == undefined) {
+                                newArchivedNews[j].items.push({
+                                    headline: compPath[i].querySelector(".news-item-headline").innerText,
+                                    body: compPath[i].querySelector(".news-item-body").innerText,
+                                    link: compPath[i].querySelector(".news-item-link").href,
+                                    icon: compPath[i].querySelector(".news-item-icon").src,
+                                    guid: itemGuid
+                                });
+                            }
+                            
+                            foundCategory = true;
+                            break;
+                        }
+                    }
+                    
+                    if(!foundCategory) {
+                        newArchivedNews.push({
+                            title: categoryTitle,
+                            items: []
+                        });
+                        newArchivedNews[newArchivedNews.length - 1].items.push({
+                            headline: compPath[i].querySelector(".news-item-headline").innerText,
+                            body: compPath[i].querySelector(".news-item-body").innerText,
+                            link: compPath[i].querySelector(".news-item-link").href,
+                            icon: compPath[i].querySelector(".news-item-icon").src,
+                            guid: itemGuid
+                        });
+                    }
+                    
+                    
+                    localStorage.setItem("archived-news", JSON.stringify(newArchivedNews));
+                    break;
+                }
             }
-        }
+        });
     });
 }
