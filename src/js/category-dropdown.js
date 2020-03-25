@@ -1,8 +1,7 @@
-// Dropdown
-const categoryDropdownDOM = document.querySelectorAll(".category-dropdown");
-
-categoryDropdownDOM.forEach(function(e) {
-    e.addEventListener("click", function(e) {
+function addDropdownListener(dropdown) {
+    // Dropdown
+    dropdown.addEventListener("click", function(e) {
+        console.log("clicked")
         const compPath = e.composedPath();
         for(let i = 0; i < compPath.length; i++) {
             if(compPath[i].classList.contains("category-dropdown"))  {
@@ -22,11 +21,14 @@ categoryDropdownDOM.forEach(function(e) {
                     anime({
                         targets: dropdownContent,
                         height: (9 * dropdownContent.children.length) + "rem",
-                        duration: 500
+                        duration: 500,
+                        easing: "easeInOutExpo"
                     });
+
+                    setTimeout(function() { dropdownContent.classList.add("applied-transition") }, 500);
                 } else {
                     compPath[i].classList.remove("turned");
-                    
+                    dropdownContent.classList.remove("applied-transition");
 
                     anime({
                         targets: dropdownArrowDOM,
@@ -46,13 +48,10 @@ categoryDropdownDOM.forEach(function(e) {
             }
         }
     });
-});
+}
 
 
-// News item drag
-const newsItemsDOM = document.querySelectorAll(".news-item");
 const dropdownContainerDOM = document.querySelector(".dropdown-container");
-
 
 let startPosX = 0;
 let startPosY = 0;

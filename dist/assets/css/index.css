@@ -5944,7 +5944,14 @@ html, body {
 }
 
 .news-item {
-  transition: transform 0.5s ease;
+  height: 9rem;
+  transition: transform 0.5s ease, height 0.5s 0.5s ease;
+}
+
+.news-item-headline {
+  width: calc(100vw - 11rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .news-item-body::after {
@@ -5967,7 +5974,15 @@ html, body {
   font-size: 1.5rem;
 }
 
+.category-dropdown-wrapper {
+  transition: transform 0.5s 0.5s ease, opacity 0.5s 0.5s ease;
+}
+
 .category-dropdown-wrapper .dropdown-content {
   height: 0;
   overflow: hidden;
+}
+
+.category-dropdown-wrapper .dropdown-content.applied-transition {
+  transition: height 0.5s 0.5s ease;
 }

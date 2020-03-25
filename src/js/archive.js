@@ -3,6 +3,10 @@ const templateCategoryDropdownDOM = document.querySelector("#template-category-d
 const templateNewsItemDOM = document.querySelector("#template-news-item");
 
 const archivedNews = JSON.parse(sessionStorage.getItem("archived-news"));
+let removedItems = [];
+for(let i = 0; i < archivedNews.length; i++) {
+    removedItems.push(0);
+}
 
 archivedNews.forEach(function(e) {
     const dropdownClone = templateCategoryDropdownDOM.content.cloneNode(true);
@@ -29,6 +33,7 @@ archivedNews.forEach(function(e) {
 });
 
 
+
 const trashButtonsDOM = document.querySelectorAll(".button-trash");
 
 trashButtonsDOM.forEach(function(e) {
@@ -40,11 +45,19 @@ trashButtonsDOM.forEach(function(e) {
                 // Remove item from data archive
                 const dataID = compPath[i].getAttribute("data-id");
                 const dataCategory = compPath[i].getAttribute("data-category");
-
+                
+                let categoryIsRemoved = false;
                 let newArchivedNews = archivedNews;
                 for(let n = 0; n < newArchivedNews.length; n++) {
                     if(newArchivedNews[n].title == dataCategory) {
-                        newArchivedNews[n].items.splice(dataID, 1);
+                        newArchivedNews[n].items.splice(dataID - removedItems[n], 1);
+                        removedItems[n]++;
+                        compPath[i + 1].style.height = (9 * newArchivedNews[n].items.length) + "rem";
+
+                        if(newArchivedNews[n].items.length == 0) {
+                            categoryIsRemoved = true;
+                            newArchivedNews.splice(n, 1);
+                        }
                         break;
                     }
                 }
@@ -52,7 +65,19 @@ trashButtonsDOM.forEach(function(e) {
 
 
                 // Remove item from current document
-                compPath[i].remove(); // TODO: Implement fade-out
+                compPath[i].style.height = "0";
+                compPath[i].style.transform = "translateX(100%)";
+                
+                setTimeout(function() {
+                    compPath[i].remove();
+                }, 1500);
+                
+                /*if(categoryIsRemoved) {
+                    compPath[i + 2].style.opacity = 0;
+                    compPath[i + 2].style.transform = "translateY(-2rem)";
+                    setTimeout(function() { compPath[i + 2].remove() }, 1000);
+                }*/
+              
                 break;
             }
         }
