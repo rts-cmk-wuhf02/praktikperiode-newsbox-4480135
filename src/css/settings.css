@@ -36,6 +36,16 @@
     @apply text-teal-500;
 }
 
+.dark-mode-button {
+    font-family: "Barlow";
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+}
+
+.dark-mode-button:focus {
+    outline: none;
+}
+
 
 .dark-mode .settings-heading {
     @apply text-teal-400;

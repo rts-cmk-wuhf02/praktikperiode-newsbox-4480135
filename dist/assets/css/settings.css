@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+
 .primary-heading {
   font-family: "Roboto", sans-serif;
   font-size: 2.4rem;
@@ -47,10 +49,6 @@
   font-size: 0.7rem;
   font-weight: 300;
 }
-
-/*
-https://fonts.google.com/specimen/Barlow+Condensed?preview.text=THE+QUICK+BROWN+FOX+JUMPS+OVER+THE+LAZY+DOG&preview.text_type=custom
-*/
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
@@ -5935,6 +5933,8 @@ https://fonts.google.com/specimen/Barlow+Condensed?preview.text=THE+QUICK+BROWN+
 
 html, body {
   font-size: 32px;
+  letter-spacing: 2px;
+  font-family: "Roboto", sans-serif;
 }
 
 .nav-icon {
@@ -6035,6 +6035,16 @@ html, body {
 
 .settings-heading {
   color: #38b2ac;
+}
+
+.dark-mode-button {
+  font-family: "Barlow";
+  letter-spacing: 3px;
+  font-size: 1.2rem;
+}
+
+.dark-mode-button:focus {
+  outline: none;
 }
 
 .dark-mode .settings-heading {
