@@ -59,7 +59,7 @@ let optionHealth = sessionStorage.getItem("option-health");
 let optionTravel = sessionStorage.getItem("option-travel");
 let optionSport = sessionStorage.getItem("option-sport");
 
-if(optionEurope == "true") {
+if(optionEurope != "false") {
     fetch("https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml").then(function(response) {
         return response.text();
     }).then(function(data) {
@@ -67,7 +67,7 @@ if(optionEurope == "true") {
     });
 }
 
-if(optionBusiness == "true") {
+if(optionBusiness != "false") {
     fetch("https://rss.nytimes.com/services/xml/rss/nyt/Business.xml").then(function(response) {
         return response.text();
     }).then(function(data) {
@@ -75,7 +75,7 @@ if(optionBusiness == "true") {
     });
 }
 
-if(optionHealth == "true") {
+if(optionHealth != "false") {
     fetch("https://rss.nytimes.com/services/xml/rss/nyt/Health.xml").then(function(response) {
         return response.text();
     }).then(function(data) {
@@ -83,7 +83,7 @@ if(optionHealth == "true") {
     });
 }
 
-if(optionTravel == "true") {
+if(optionTravel != "false") {
     fetch("https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml").then(function(response) {
         return response.text();
     }).then(function(data) {
@@ -91,7 +91,7 @@ if(optionTravel == "true") {
     });
 }
 
-if(optionSport == "true") {
+if(optionSport != "false") {
     fetch("https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml").then(function(response) {
         return response.text();
     }).then(function(data) {
