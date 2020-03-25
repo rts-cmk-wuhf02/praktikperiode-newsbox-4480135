@@ -17,6 +17,7 @@ html, body {
 }
 
 
+/* Dark mode */
 .dark-mode {
     @apply bg-gray-900 text-white;
 }

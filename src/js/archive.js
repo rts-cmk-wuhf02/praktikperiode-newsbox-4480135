@@ -68,18 +68,27 @@ trashButtonsDOM.forEach(function(e) {
 
 
                 // Remove item from current document
-                compPath[i].style.height = "0";
-                compPath[i].style.transform = "translateX(100%)";
-                
-                setTimeout(function() {
-                    compPath[i].remove();
-                }, 1500);
-                
-                /*if(categoryIsRemoved) {
-                    compPath[i + 2].style.opacity = 0;
-                    compPath[i + 2].style.transform = "translateY(-2rem)";
-                    setTimeout(function() { compPath[i + 2].remove() }, 1000);
-                }*/
+                if(categoryIsRemoved) {
+                    compPath[i + 2].style.height = compPath[i + 2].clientHeight + "px";
+                    compPath[i + 2].style.transform = "translateX(100%)";
+                    console.log(compPath[i + 2])
+                    compPath[i + 2].classList.add("transition-h-0");
+
+                    setTimeout(function() {
+                        compPath[i + 2].classList.add("important-h-0");
+                    }, 50);
+                    
+                    setTimeout(function() {
+                        compPath[i + 2].remove();
+                    }, 1500);
+                } else {
+                    compPath[i].style.height = "0";
+                    compPath[i].style.transform = "translateX(100%)";
+                    
+                    setTimeout(function() {
+                        compPath[i].remove();
+                    }, 1500);
+                }
               
                 break;
             }

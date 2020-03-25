@@ -26,8 +26,12 @@
     @apply w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden;
 }
 
-.category-dropdown-wrapper {
-    transition: transform 0.5s 0.5s ease, opacity 0.5s 0.5s ease;
+.category-dropdown-wrapper.transition-h-0 {
+    transition: transform 0.5s ease, height 0.5s 0.5s ease;
+}
+
+.category-dropdown-wrapper.important-h-0 {
+    height: 0 !important;
 }
 
 .category-dropdown-wrapper .dropdown-content {
