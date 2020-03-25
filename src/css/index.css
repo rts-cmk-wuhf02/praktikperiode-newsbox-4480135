@@ -11,6 +11,10 @@
     white-space: nowrap;
 }
 
+.news-item-body {
+    height: 3em;
+}
+
 .news-item-body::after {
     content: "...";
     position: absolute;
