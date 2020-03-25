@@ -53,11 +53,11 @@ function xml2json(srcDOM) {
 
 
 
-let optionEurope = sessionStorage.getItem("option-europe");
-let optionBusiness = sessionStorage.getItem("option-business");
-let optionHealth = sessionStorage.getItem("option-health");
-let optionTravel = sessionStorage.getItem("option-travel");
-let optionSport = sessionStorage.getItem("option-sport");
+let optionEurope = localStorage.getItem("option-europe");
+let optionBusiness = localStorage.getItem("option-business");
+let optionHealth = localStorage.getItem("option-health");
+let optionTravel = localStorage.getItem("option-travel");
+let optionSport = localStorage.getItem("option-sport");
 
 if(optionEurope != "false") {
     fetch("https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml").then(function(response) {
@@ -136,7 +136,30 @@ function showData(data) {
     }
     
     dropdownContainerDOM.appendChild(dropdownClone);
-    let x = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
+    let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
     
-    addDropdownListener(x);
+    addDropdownListener(element);
+
+
+
+    const archiveButtonDOM = element.querySelector(".button-archive");
+
+    archiveButtonDOM.addEventListener("click", function(e) {
+        const compPath = e.composedPath();
+
+        for(let i = 0; i < compPath.length; i++) {
+            if(compPath[i].classList.contains("news-item")) {
+                let newArchivedNews = [];
+                if(localStorage.getItem("archived-news")) newArchivedNews = localStorage.getItem("archived-news");
+
+
+                // Add to archived news
+
+
+
+                localStorage.setItem("archived-news", JSON.stringify(newArchivedNews));
+                break;
+            }
+        }
+    });
 }

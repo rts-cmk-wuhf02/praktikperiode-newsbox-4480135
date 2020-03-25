@@ -2,7 +2,7 @@ const dropdownContainerDOM = document.querySelector(".dropdown-container");
 const templateCategoryDropdownDOM = document.querySelector("#template-category-dropdown");
 const templateNewsItemDOM = document.querySelector("#template-news-item");
 
-const archivedNews = JSON.parse(sessionStorage.getItem("archived-news"));
+const archivedNews = JSON.parse(localStorage.getItem("archived-news"));
 let removedItems = [];
 for(let i = 0; i < archivedNews.length; i++) {
     removedItems.push(0);
@@ -61,7 +61,7 @@ trashButtonsDOM.forEach(function(e) {
                         break;
                     }
                 }
-                sessionStorage.setItem("archived-news", JSON.stringify(newArchivedNews));
+                localStorage.setItem("archived-news", JSON.stringify(newArchivedNews));
 
 
                 // Remove item from current document
@@ -83,21 +83,3 @@ trashButtonsDOM.forEach(function(e) {
         }
     });
 });
-
-/*
-Archived item structure:
-
-[
-    {
-        headline: "",
-        items: [
-            {
-                title: "",
-                body: "",
-                link: "",
-                icon: ""
-            }
-        ]
-    }
-]
-*/
