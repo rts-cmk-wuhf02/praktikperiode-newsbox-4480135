@@ -9,3 +9,16 @@ html, body {
 .nav-icon {
     @apply text-3xl align-bottom leading-none;
 }
+
+.header {
+    @apply w-full border-solid border-b border-gray-600 h-32 flex justify-between items-end p-8 pt-4 bg-white sticky top-0 z-50;
+}
+
+
+.dark-mode {
+    @apply bg-gray-900 text-white;
+}
+
+.dark-mode .header {
+    @apply bg-gray-800 text-white;
+}

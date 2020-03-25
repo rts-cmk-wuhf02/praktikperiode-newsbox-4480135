@@ -5942,3 +5942,31 @@ html, body {
   vertical-align: bottom;
   line-height: 1;
 }
+
+.header {
+  width: 100%;
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-color: #718096;
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 2rem;
+  padding-top: 1rem;
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.dark-mode {
+  background-color: #1a202c;
+  color: #fff;
+}
+
+.dark-mode .header {
+  background-color: #2d3748;
+  color: #fff;
+}

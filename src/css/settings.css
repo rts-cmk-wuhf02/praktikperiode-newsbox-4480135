@@ -31,3 +31,28 @@
 :checked ~ label .toggle-input .toggle-input-circle {
     @apply translate-x-8;
 }
+
+.settings-heading {
+    @apply text-teal-500;
+}
+
+
+.dark-mode .settings-heading {
+    @apply text-teal-400;
+}
+
+.dark-mode .settings-container {
+    @apply bg-gray-800;
+}
+
+.dark-mode .toggle-input {
+    @apply bg-gray-900;
+}
+
+.dark-mode :checked ~ label .toggle-input {
+    @apply bg-teal-400;
+} 
+
+.dark-mode .toggle-input-circle {
+    @apply bg-gray-700;
+}
