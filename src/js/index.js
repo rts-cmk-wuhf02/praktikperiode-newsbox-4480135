@@ -146,6 +146,7 @@ function refreshNews() {
         });
     }
     
+    document.body.classList.remove("refreshing");
 }
 
 

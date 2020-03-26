@@ -58,19 +58,17 @@ const dropdownContainerDOM = document.querySelector(".dropdown-container");
 
 let startPosX = 0;
 let startPosY = 0;
-let startScrollTop = 0;
 let trackedPath = [];
 
 dropdownContainerDOM.addEventListener("touchstart", function(e) {
     startPosX = e.touches[0].screenX;
     startPosY = e.touches[0].screenY;
-    startScrollTop = dropdownContainerDOM.scrollTop;
     trackedPath = e.path;
 }, true);
 
-dropdownContainerDOM.addEventListener("touchend", function(e) {
+dropdownContainerDOM.addEventListener("touchmove", function(e) {
     // Left swipe
-    if(startPosX - 20 > e.changedTouches[0].screenX && e.changedTouches[0].screenY >= startPosY - 50 && e.changedTouches[0].screenY <= startPosY + 50) {
+    if(startPosX - 20 > e.touches[0].screenX && e.touches[0].screenY >= startPosY - 50 && e.touches[0].screenY <= startPosY + 50) {
         for(let i = 0; i < trackedPath.length; i++) {
             if(trackedPath[i].classList != undefined && trackedPath[i].classList.contains("news-item")) {
                 trackedPath[i].style.transform = "translateX(-9rem)";
@@ -79,7 +77,7 @@ dropdownContainerDOM.addEventListener("touchend", function(e) {
         }
     }
     // Right swipe
-    else if(startPosX + 20 < e.changedTouches[0].screenX && e.changedTouches[0].screenY >= startPosY - 50 && e.changedTouches[0].screenY <= startPosY + 50) {
+    else if(startPosX + 20 < e.touches[0].screenX && e.touches[0].screenY >= startPosY - 50 && e.touches[0].screenY <= startPosY + 50) {
         for(let i = 0; i < trackedPath.length; i++) {
             if(trackedPath[i].classList != undefined && trackedPath[i].classList.contains("news-item")) {
                 trackedPath[i].style.transform = "translateX(0)";
@@ -88,10 +86,11 @@ dropdownContainerDOM.addEventListener("touchend", function(e) {
         }
     }
     // Down swipe (refresh)
-    else if(isIndexPage && startPosY + 100 < e.changedTouches[0].screenY && e.changedTouches[0].screenX >= startPosX - 50 && e.changedTouches[0].screenX <= startPosX + 50) {
-        if(startScrollTop <= 2) {
+    else if(isIndexPage && startPosY + 100 < e.touches[0].screenY && e.touches[0].screenX >= startPosX - 50 && e.touches[0].screenX <= startPosX + 50) {
+        if(dropdownContainerDOM.scrollTop <= 2) {
             dropdownContainerDOM.style.overflow = "hidden";
             document.querySelector(".refresh-block").classList.add("visible");
+            document.body.classList.add("refreshing");
 
             refreshNews();
         }
