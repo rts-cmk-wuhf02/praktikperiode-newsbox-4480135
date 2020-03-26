@@ -5,11 +5,17 @@
 
 <%- include("../partials/head-end") -%>
 
-    <%- include("../partials/header", {title: "Newsbox", showSettings: true, showBack: false}) -%>
-    <%- include("../partials/search-bar") -%>
+    <div class="flex flex-col h-screen">
+        <%- include("../partials/header", {title: "Newsbox", showSettings: true, showBack: false}) -%>
+        <%- include("../partials/search-bar") -%>
 
-    <div class="dropdown-container">
-        
+        <div class="refresh-block flex justify-center items-center text-3xl w-full text-gray-500">
+            <i class="fas fa-sync refresh-icon m-8"></i>
+        </div>
+
+        <div class="dropdown-container">
+            
+        </div>
     </div>
 
 

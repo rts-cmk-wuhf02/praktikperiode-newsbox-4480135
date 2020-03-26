@@ -1,3 +1,4 @@
+// Show archived items
 const dropdownContainerDOM = document.querySelector(".dropdown-container");
 const templateCategoryDropdownDOM = document.querySelector("#template-category-dropdown");
 const templateNewsItemDOM = document.querySelector("#template-news-item");
@@ -36,7 +37,7 @@ archivedNews.forEach(function(e) {
 });
 
 
-
+// Trash buttons
 const trashButtonsDOM = document.querySelectorAll(".button-trash");
 
 trashButtonsDOM.forEach(function(e) {

@@ -34,6 +34,39 @@
     background-color: #87BCBF;
 }
 
+.dropdown-container {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.refresh-block:not(.visible) {
+    visibility: hidden;
+}
+
+.refresh-block {
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.5s ease;
+}
+
+.refresh-block.visible {
+    height: 8rem;
+}
+
+.refresh-block.visible .refresh-icon {
+    animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .category-dropdown {
     @apply w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden;
 }
