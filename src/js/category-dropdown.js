@@ -58,11 +58,13 @@ const dropdownContainerDOM = document.querySelector(".dropdown-container");
 
 let startPosX = 0;
 let startPosY = 0;
+let startScrollY = 0;
 let trackedPath = [];
 
 dropdownContainerDOM.addEventListener("touchstart", function(e) {
     startPosX = e.touches[0].screenX;
     startPosY = e.touches[0].screenY;
+    startScrollY = dropdownContainerDOM.scrollTop;
     trackedPath = e.path;
 }, true);
 
@@ -87,7 +89,7 @@ dropdownContainerDOM.addEventListener("touchend", function(e) {
     }
     // Down swipe (refresh)
     else if(isIndexPage && startPosY + 100 < e.changedTouches[0].screenY && e.changedTouches[0].screenX >= startPosX - 50 && e.changedTouches[0].screenX <= startPosX + 50) {
-        if(dropdownContainerDOM.scrollTop <= 2) {
+        if(startScrollY <= 2) {
             dropdownContainerDOM.style.overflow = "hidden";
             document.querySelector(".refresh-block").classList.add("visible");
             document.body.classList.add("refreshing");
