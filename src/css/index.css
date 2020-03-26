@@ -26,6 +26,14 @@
     @apply flex-none w-32 p-2 h-32 flex justify-center items-center box-content text-white text-2xl;
 }
 
+.news-item-button.button-trash {
+    background-color: #D95454;
+}
+
+.news-item-button.button-archive {
+    background-color: #87BCBF;
+}
+
 .category-dropdown {
     @apply w-full h-20 px-6 bg-white flex justify-between items-center border-b border-gray-600 overflow-hidden;
 }
