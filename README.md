@@ -86,7 +86,7 @@ Husk at 'nice-to-have' opgaverne **ikke** er valgfrie opgaver! Jeg forventer at 
 Opgaven skal være færdig senest fredag d. 17/4 kl. 13:40. Dvs. at det sidste push inden sluttidspunktet udgør din aflevering. Dit projekt vil blive testet på en telefon(iPhone 11), så det er vigtigt at du også tester på din telefon, og ikke udelukkende tester i browserens emulator.
 
 **Min applikation er tilgængelig på følgende url:**
-Her skal du angive din webapplikations URL(Netlify) 
+https://distracted-montalcini-ba1430.netlify.com/
 
 ## Se her hvis du får brug for hjælp
 **StackOverflow:**<br>

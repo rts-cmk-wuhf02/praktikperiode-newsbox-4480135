@@ -1,5 +1,14 @@
 isIndexPage = true;
 
+// Category order
+let categoryOrder = [
+    "Europe",
+    "Business",
+    "Health",
+    "Travel",
+    "Sports",
+];
+if(localStorage.getItem("category-order") != undefined) categoryOrder = JSON.parse(localStorage.getItem("category-order"));
 
 // DOM
 const dropdownContainerDOM = document.querySelector(".dropdown-container");
@@ -146,7 +155,6 @@ function showData(data) {
     const srcDOM = parser.parseFromString(data, "application/xml");
 
     const jsonData = xml2json(srcDOM);
-    console.log(jsonData)
 
 
     const dropdownClone = templateCategoryDropdownDOM.content.cloneNode(true);
@@ -175,6 +183,7 @@ function showData(data) {
     
     dropdownContainerDOM.appendChild(dropdownClone);
     let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
+    element.style.order = categoryOrder.indexOf(categoryTitle);
     
     addDropdownListener(element);
 
