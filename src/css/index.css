@@ -1,7 +1,11 @@
 @import "base.css";
 
-body.refreshing {
+.refreshing .dropdown-container {
     touch-action: none;
+}
+
+body {
+    overscroll-behavior-y: contain;
 }
 
 .news-item {
