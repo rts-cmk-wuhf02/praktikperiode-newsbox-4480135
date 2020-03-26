@@ -1,15 +1,24 @@
 @import "base.css";
 
+body {
+    overflow-y: hidden;
+}
+
+.dragging {
+    touch-action: none;
+    overflow-y: hidden;
+}
+
 .settings-container {
     border-radius: 1.5rem;
 }
 
 .option-wrapper {
-    @apply flex items-center justify-between h-24 py-6 px-8 w-full uppercase border-b border-gray-600;
+    @apply flex items-center justify-between h-24 py-6 px-8 w-full uppercase border-b border-gray-600 bg-white relative flex-none;
 }
 
 
-.option-wrapper:last-child {
+.option-wrapper.order-4 {
     @apply border-0;
 }
 

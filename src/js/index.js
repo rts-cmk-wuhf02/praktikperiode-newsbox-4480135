@@ -184,7 +184,7 @@ function showData(data) {
     
     dropdownContainerDOM.appendChild(dropdownClone);
     let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
-    element.style.order = categoryOrder.indexOf(categoryTitle);
+    element.classList.add("order-" + categoryOrder.indexOf(categoryTitle));
     
     addDropdownListener(element);
 
