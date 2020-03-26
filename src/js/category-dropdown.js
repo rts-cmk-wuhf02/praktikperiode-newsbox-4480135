@@ -98,6 +98,16 @@ dropdownContainerDOM.addEventListener("touchend", function(e) {
     }
 }, true);
 
+
+let prevScrollTop = 0;
 dropdownContainerDOM.addEventListener("scroll", function(e) {
-    console.log(e);
+    if(dropdownContainerDOM.scrollTop <= 0 && prevScrollTop >= 1) {
+        document.querySelector(".refresh-slip").classList.add("visible");
+        
+        setTimeout(function() {
+            document.querySelector(".refresh-slip").classList.remove("visible");
+        }, 500);
+    }
+
+    prevScrollTop = dropdownContainerDOM.scrollTop;
 });
