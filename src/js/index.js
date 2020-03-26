@@ -69,7 +69,7 @@ function refreshNews() {
     const categoryDropdownContentsDOM = document.querySelectorAll(".category-dropdown-wrapper");
 
     for(let i = 0; i < categoryDropdownContentsDOM.length; i++) {
-        categoryDropdownContentsDOM[i].innerHTML = "";
+        categoryDropdownContentsDOM[i].remove();
     }
 
 
