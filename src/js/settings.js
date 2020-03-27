@@ -71,8 +71,12 @@ settingsContainerDOM.addEventListener("touchstart", function(e) {
 settingsContainerDOM.addEventListener("touchmove", function(e) {
     if(trackedElement != null) {
         if(e.timeStamp < initialTime + 75) {
+            trackedElement.style.top = "0px";
+            trackedElement.classList.remove("z-10");
             trackedElement = null;
             offsetPosY = 0;
+            curPosY = 0;
+            document.documentElement.classList.remove("dragging");
         } else {
             curPosY = -(offsetPosY - e.touches[0].clientY);
             trackedElement.style.top = curPosY + "px";
