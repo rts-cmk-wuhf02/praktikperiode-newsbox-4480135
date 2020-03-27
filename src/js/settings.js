@@ -48,6 +48,7 @@ darkModeBtnDOM.addEventListener("click", function() {
 const settingsContainerDOM = document.querySelector(".settings-container");
 
 let offsetPosY = 0;
+let curPosY = 0;
 let trackedElement = null;
 
 settingsContainerDOM.addEventListener("touchstart", function(e) {
@@ -65,17 +66,51 @@ settingsContainerDOM.addEventListener("touchstart", function(e) {
 }, true);
 
 settingsContainerDOM.addEventListener("touchmove", function(e) {
-    if(trackedElement != null) trackedElement.style.top = -(offsetPosY - e.touches[0].clientY) + "px";
+    if(trackedElement != null) {
+        curPosY = -(offsetPosY - e.touches[0].clientY);
+        trackedElement.style.top = curPosY + "px";
+    }
 }, true);
 
 settingsContainerDOM.addEventListener("touchend", function(e) {
     if(trackedElement != null) {
-        // Snap element back in place
+        // Calculate new order
+        let firstOrder = parseInt(trackedElement.classList[1].replace("order-", ""));
+        let newOrder = Math.floor((96 + curPosY) / 192) + firstOrder;
+        if(newOrder <= -1) newOrder = 0;
+        else if(newOrder >= 5) newOrder = 4;
+
+        // Move other elements around
+        const optionWrappersDOM = document.querySelectorAll(".option-wrapper");
+        for(let i = 0; i < optionWrappersDOM.length; i++) {
+            if(optionWrappersDOM[i].classList[1].indexOf("order-") == 0) {
+                const orderThis = parseInt(optionWrappersDOM[i].classList[1].replace("order-", ""));
+
+                if((orderThis > firstOrder && orderThis <= newOrder)) {
+                    optionWrappersDOM[i].classList.remove(optionWrappersDOM[i].classList[1]);
+                    optionWrappersDOM[i].classList.add("order-" + (orderThis - 1));
+                } else if (orderThis < firstOrder && orderThis >= newOrder) {
+                    optionWrappersDOM[i].classList.remove(optionWrappersDOM[i].classList[1]);
+                    optionWrappersDOM[i].classList.add("order-" + (orderThis + 1));
+                }
+            }
+        }
+
+        // Replace old order with new order
+        trackedElement.classList.replace(trackedElement.classList[1], "order-" + newOrder);
+
+        // Change saved order
+        let name = categoryOrder.splice(firstOrder, 1);
+        categoryOrder.splice(newOrder, 0, name[0]);
+        localStorage.setItem("category-order", JSON.stringify(categoryOrder));
 
         
         // Reset values
+        trackedElement.style.top = "0px";
+        trackedElement.classList.remove("z-10");
         trackedElement = null;
         offsetPosY = 0;
+        curPosY = 0;
         document.body.classList.remove("dragging");
     }
 }, true);
