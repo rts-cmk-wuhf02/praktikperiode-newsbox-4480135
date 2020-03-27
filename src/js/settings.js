@@ -50,6 +50,7 @@ const settingsContainerDOM = document.querySelector(".settings-container");
 let offsetPosY = 0;
 let curPosY = 0;
 let trackedElement = null;
+let initialTime = 0;
 
 settingsContainerDOM.addEventListener("touchstart", function(e) {
     const compPath = e.composedPath();
@@ -57,6 +58,7 @@ settingsContainerDOM.addEventListener("touchstart", function(e) {
         if(compPath[i].classList.contains("option-wrapper")) {
             trackedElement = compPath[i];
             offsetPosY = compPath[i].offsetTop + (e.touches[0].clientY - compPath[i].offsetTop);
+            initialTime = e.timeStamp;
 
             compPath[i].classList.add("z-10");
             document.documentElement.classList.add("dragging");
@@ -68,8 +70,13 @@ settingsContainerDOM.addEventListener("touchstart", function(e) {
 
 settingsContainerDOM.addEventListener("touchmove", function(e) {
     if(trackedElement != null) {
-        curPosY = -(offsetPosY - e.touches[0].clientY);
-        trackedElement.style.top = curPosY + "px";
+        if(e.timeStamp < initialTime + 75) {
+            trackedElement = null;
+            offsetPosY = 0;
+        } else {
+            curPosY = -(offsetPosY - e.touches[0].clientY);
+            trackedElement.style.top = curPosY + "px";
+        }
     }
 }, true);
 
