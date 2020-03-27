@@ -57,6 +57,14 @@ body {
     transition: transform 0.5s ease;
 }
 
+.main-element {
+    overscroll-behavior: contain;
+}
+
+.dragging .main-element {
+    
+}
+
 
 :checked ~ label .toggle-input {
     background-color: #87BCBF;
