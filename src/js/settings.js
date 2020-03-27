@@ -60,6 +60,7 @@ settingsContainerDOM.addEventListener("touchstart", function(e) {
 
             compPath[i].classList.add("z-10");
             document.body.classList.add("dragging");
+            e.stopPropagation();
             break;
         }
     }
