@@ -1,12 +1,15 @@
 @import "base.css";
 
-body {
-    overflow-y: hidden;
+html.dragging, .dragging body {
+    overflow: hidden;
+}
+
+.dragging body {
+    -webkit-overflow-scrolling: touch;
 }
 
 .dragging {
     touch-action: none;
-    overflow-y: hidden;
 }
 
 .settings-container {

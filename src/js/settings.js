@@ -59,7 +59,7 @@ settingsContainerDOM.addEventListener("touchstart", function(e) {
             offsetPosY = compPath[i].offsetTop + (e.touches[0].clientY - compPath[i].offsetTop);
 
             compPath[i].classList.add("z-10");
-            document.body.classList.add("dragging");
+            document.documentElement.classList.add("dragging");
             e.stopPropagation();
             break;
         }
@@ -121,6 +121,6 @@ settingsContainerDOM.addEventListener("touchend", function(e) {
         trackedElement = null;
         offsetPosY = 0;
         curPosY = 0;
-        document.body.classList.remove("dragging");
+        document.documentElement.classList.remove("dragging");
     }
 }, true);
