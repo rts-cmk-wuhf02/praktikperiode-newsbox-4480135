@@ -62,7 +62,7 @@ body {
 }
 
 .dragging .main-element {
-    
+    overflow: hidden;
 }
 
 
