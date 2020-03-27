@@ -1,5 +1,5 @@
-const hasPassedTutorial = localStorage.getItem("passed-tutorial") || false;
+const tutorialProgress = localStorage.getItem("passed-tutorial") || 0;
 
-if(!hasPassedTutorial) {
-    
+if(tutorialProgress == 0) {
+
 }
