@@ -5,68 +5,70 @@
 
 <%- include("../partials/head-end") -%>
 
-    <%- include("../partials/header", {title: "News settings", showSettings: false, showBack: true}) -%>
+    <div class="flex flex-col h-full">
+        <%- include("../partials/header", {title: "News settings", showSettings: false, showBack: true}) -%>
     
-    <main class="text-center px-4 py-10">
-        <p class="primary-heading settings-heading">Manage</p>
-        <p class="sub-title">Categories</p>
+        <main class="text-center px-4 py-10 overflow-y-auto">
+            <p class="primary-heading settings-heading">Manage</p>
+            <p class="sub-title">Categories</p>
 
-        <section class="settings-container bg-white my-16 shadow flex flex-col overflow-hidden">
-            <article class="option-wrapper">
-                <p class="card-title">Europe</p>
-                <input class="option-checkbox" type="checkbox" id="option-europe" hidden>
-                <label for="option-europe" class="h-full">
-                    <div class="toggle-input">
-                        <div class="toggle-input-circle"></div>
-                    </div>
-                </label>
-            </article>
+            <section class="settings-container bg-white my-16 shadow flex flex-col overflow-hidden">
+                <article class="option-wrapper">
+                    <p class="card-title">Europe</p>
+                    <input class="option-checkbox" type="checkbox" id="option-europe" hidden>
+                    <label for="option-europe" class="h-full">
+                        <div class="toggle-input">
+                            <div class="toggle-input-circle"></div>
+                        </div>
+                    </label>
+                </article>
 
-            <article class="option-wrapper">
-                <p class="card-title">Health</p>
-                <input class="option-checkbox" type="checkbox" id="option-health" hidden>
-                <label for="option-health" class="h-full">
-                    <div class="toggle-input">
-                        <div class="toggle-input-circle"></div>
-                    </div>
-                </label>
-            </article>
+                <article class="option-wrapper">
+                    <p class="card-title">Health</p>
+                    <input class="option-checkbox" type="checkbox" id="option-health" hidden>
+                    <label for="option-health" class="h-full">
+                        <div class="toggle-input">
+                            <div class="toggle-input-circle"></div>
+                        </div>
+                    </label>
+                </article>
 
-            <article class="option-wrapper">
-                <p class="card-title">Sports</p>
-                <input class="option-checkbox" type="checkbox" id="option-sport" hidden>
-                <label for="option-sport" class="h-full">
-                    <div class="toggle-input">
-                        <div class="toggle-input-circle"></div>
-                    </div>
-                </label>
-            </article>
+                <article class="option-wrapper">
+                    <p class="card-title">Sports</p>
+                    <input class="option-checkbox" type="checkbox" id="option-sport" hidden>
+                    <label for="option-sport" class="h-full">
+                        <div class="toggle-input">
+                            <div class="toggle-input-circle"></div>
+                        </div>
+                    </label>
+                </article>
 
-            <article class="option-wrapper">
-                <p class="card-title">Business</p>
-                <input class="option-checkbox" type="checkbox" id="option-business" hidden>
-                <label for="option-business" class="h-full">
-                    <div class="toggle-input">
-                        <div class="toggle-input-circle"></div>
-                    </div>
-                </label>
-            </article>
+                <article class="option-wrapper">
+                    <p class="card-title">Business</p>
+                    <input class="option-checkbox" type="checkbox" id="option-business" hidden>
+                    <label for="option-business" class="h-full">
+                        <div class="toggle-input">
+                            <div class="toggle-input-circle"></div>
+                        </div>
+                    </label>
+                </article>
 
-            <article class="option-wrapper">
-                <p class="card-title">Travel</p>
-                <input class="option-checkbox" type="checkbox" id="option-travel" hidden>
-                <label for="option-travel" class="h-full">
-                    <div class="toggle-input">
-                        <div class="toggle-input-circle"></div>
-                    </div>
-                </label>
-            </article>
-        </section>
+                <article class="option-wrapper">
+                    <p class="card-title">Travel</p>
+                    <input class="option-checkbox" type="checkbox" id="option-travel" hidden>
+                    <label for="option-travel" class="h-full">
+                        <div class="toggle-input">
+                            <div class="toggle-input-circle"></div>
+                        </div>
+                    </label>
+                </article>
+            </section>
 
-        <button class="card-copy dark-mode-button border border-gray-600 p-4 rounded-full uppercase mb-4">Toggle Dark Mode</button>
+            <button class="card-copy dark-mode-button border border-gray-600 p-4 rounded-full uppercase mb-4">Toggle Dark Mode</button>
 
-        <p class="text-gray-600 font-light">Version 1.0</p>
-    </main>
+            <p class="text-gray-600 font-light">Version 1.0</p>
+        </main>
+    </div>
 
     <script src="/assets/js/settings.js"></script>
 
