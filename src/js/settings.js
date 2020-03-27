@@ -76,23 +76,32 @@ settingsContainerDOM.addEventListener("touchend", function(e) {
     if(trackedElement != null) {
         // Calculate new order
         let firstOrder = parseInt(trackedElement.classList[1].replace("order-", ""));
-        let newOrder = Math.floor((96 + curPosY) / 192) + firstOrder;
+        let elementHeight = parseFloat(getComputedStyle(document.documentElement).fontSize) * 6;
+        let newOrder = Math.floor((elementHeight / 2 + curPosY) / elementHeight) + firstOrder;
         if(newOrder <= -1) newOrder = 0;
         else if(newOrder >= 5) newOrder = 4;
 
         // Move other elements around
         const optionWrappersDOM = document.querySelectorAll(".option-wrapper");
         for(let i = 0; i < optionWrappersDOM.length; i++) {
-            if(optionWrappersDOM[i].classList[1].indexOf("order-") == 0) {
+            if(optionWrappersDOM[i] != trackedElement) {
                 const orderThis = parseInt(optionWrappersDOM[i].classList[1].replace("order-", ""));
-
+                let newOrderThis = orderThis;
+                
                 if((orderThis > firstOrder && orderThis <= newOrder)) {
-                    optionWrappersDOM[i].classList.remove(optionWrappersDOM[i].classList[1]);
-                    optionWrappersDOM[i].classList.add("order-" + (orderThis - 1));
+                    newOrderThis--;
+                    optionWrappersDOM[i].classList.add("animate-down");
                 } else if (orderThis < firstOrder && orderThis >= newOrder) {
-                    optionWrappersDOM[i].classList.remove(optionWrappersDOM[i].classList[1]);
-                    optionWrappersDOM[i].classList.add("order-" + (orderThis + 1));
+                    newOrderThis++;
+                    optionWrappersDOM[i].classList.add("animate-up");
                 }
+
+                setTimeout(function() {
+                    optionWrappersDOM[i].classList.remove("animate-down", "animate-up");
+                }, 500);
+                
+                optionWrappersDOM[i].classList.remove(optionWrappersDOM[i].classList[1]);
+                optionWrappersDOM[i].classList.add("order-" + newOrderThis);
             }
         }
 

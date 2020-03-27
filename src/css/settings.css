@@ -17,6 +17,31 @@ body {
     @apply flex items-center justify-between h-24 py-6 px-8 w-full uppercase border-b border-gray-600 bg-white relative flex-none;
 }
 
+.option-wrapper.animate-up {
+    animation: animate-up 0.5s;
+}
+
+.option-wrapper.animate-down {
+    animation: animate-down 0.5s;
+}
+
+@keyframes animate-up {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes animate-down {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
 .option-wrapper.order-4 {
     @apply border-0;
@@ -61,6 +86,10 @@ body {
 }
 
 .dark-mode .settings-container {
+    @apply bg-gray-800;
+}
+
+.dark-mode .option-wrapper {
     @apply bg-gray-800;
 }
 
