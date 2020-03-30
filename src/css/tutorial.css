@@ -1,0 +1,33 @@
+.tutorial-wrapper {
+    background-color: #00000080;
+    @apply fixed inset-0 z-40;
+}
+
+.tutorial-skip-button {
+    width: 17vw;
+    height: 17vw;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    letter-spacing: 3px;
+    font-family: "Barlow", sans-serif;
+    @apply rounded-full absolute border border-white uppercase text-white text-xl;
+}
+
+.tutorial-text {
+    position: absolute;
+    background-color: #87BCBF;
+    color: white;
+    font-weight: 300;
+    padding: 0.75rem;
+    @apply rounded-md z-50;
+}
+
+.tutorial-text-arrow {
+    background-color: inherit;
+    width: 1.25rem;
+    height: 0.75rem;
+    clip-path: polygon(50% 100%, 0 0, 100% 0);
+    margin: -1px 0;
+    @apply absolute;
+}

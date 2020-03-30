@@ -1,4 +1,5 @@
 @import "base.css";
+@import "tutorial.css";
 
 .refreshing .dropdown-container {
     touch-action: none;

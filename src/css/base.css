@@ -9,11 +9,22 @@ html, body {
 }
 
 .nav-icon {
-    @apply text-3xl align-bottom leading-none;
+    background: white;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 999px;
+    bottom: -0.5rem;
+    box-sizing: content-box;
+    padding: 0.5rem;
+    
+    @apply text-3xl align-bottom leading-none relative;
 }
 
 .header {
-    @apply w-full border-solid border-b border-gray-600 h-32 flex justify-between items-end p-8 pt-4 bg-white sticky top-0 z-50;
+    @apply w-full border-solid border-b border-gray-600 h-32 flex justify-between items-end p-8 pt-4 bg-white;
 }
 
 

@@ -5,36 +5,38 @@ const templateNewsItemDOM = document.querySelector("#template-news-item");
 
 const archivedNews = JSON.parse(localStorage.getItem("archived-news"));
 let removedItems = [];
-for(let i = 0; i < archivedNews.length; i++) {
-    removedItems.push(0);
-}
-
-archivedNews.forEach(function(e) {
-    const dropdownClone = templateCategoryDropdownDOM.content.cloneNode(true);
-    const dropdownContentCloneElement = dropdownClone.querySelector(".dropdown-content");
-
-    dropdownClone.querySelector(".dropdown-title").innerText = e.title;
-    
-    for(let i = 0; i < e.items.length; i++) {
-        const itemClone = templateNewsItemDOM.content.cloneNode(true);
-        // Needed for removal
-        itemClone.querySelector(".news-item").setAttribute("data-id", i);
-        itemClone.querySelector(".news-item").setAttribute("data-category", e.title);
-
-        // Visual information
-        itemClone.querySelector(".news-item-headline").innerText = e.items[i].headline;
-        itemClone.querySelector(".news-item-body").innerText = e.items[i].body;
-        itemClone.querySelector(".news-item-link").href = e.items[i].link;
-        itemClone.querySelector(".news-item-icon").src = e.items[i].icon;
-
-        dropdownContentCloneElement.appendChild(itemClone);
+if(archivedNews) {
+    for(let i = 0; i < archivedNews.length; i++) {
+        removedItems.push(0);
     }
 
-    dropdownContainerDOM.appendChild(dropdownClone);
-    let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
+    archivedNews.forEach(function(e) {
+        const dropdownClone = templateCategoryDropdownDOM.content.cloneNode(true);
+        const dropdownContentCloneElement = dropdownClone.querySelector(".dropdown-content");
 
-    addDropdownListener(element);
-});
+        dropdownClone.querySelector(".dropdown-title").innerText = e.title;
+        
+        for(let i = 0; i < e.items.length; i++) {
+            const itemClone = templateNewsItemDOM.content.cloneNode(true);
+            // Needed for removal
+            itemClone.querySelector(".news-item").setAttribute("data-id", i);
+            itemClone.querySelector(".news-item").setAttribute("data-category", e.title);
+
+            // Visual information
+            itemClone.querySelector(".news-item-headline").innerText = e.items[i].headline;
+            itemClone.querySelector(".news-item-body").innerText = e.items[i].body;
+            itemClone.querySelector(".news-item-link").href = e.items[i].link;
+            itemClone.querySelector(".news-item-icon").src = e.items[i].icon;
+
+            dropdownContentCloneElement.appendChild(itemClone);
+        }
+
+        dropdownContainerDOM.appendChild(dropdownClone);
+        let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
+
+        addDropdownListener(element);
+    });
+}
 
 
 // Trash buttons
