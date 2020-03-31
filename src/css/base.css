@@ -36,3 +36,7 @@ html, body {
 .dark-mode .header {
     @apply bg-gray-800 text-white;
 }
+
+.dark-mode .nav-icon {
+    @apply bg-gray-800;
+}

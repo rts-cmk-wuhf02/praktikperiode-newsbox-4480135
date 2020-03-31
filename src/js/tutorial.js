@@ -9,41 +9,44 @@ const tutorialStructure = [
         element: ".nav-icon-archive",
         text: "Tap here to go to your archive.",
         box: "8rem auto auto 1rem",
-        arrow: "2.5rem top"
+        arrow: "2.5rem top",
+        page: "/"
     },
     {
         element: ".nav-icon-settings",
         text: "Tap here to go to settings.",
         box: "8rem 1rem auto auto",
-        arrow: "12.5rem top"
+        arrow: "12.5rem top",
+        page: "/archive/"
     },
     {
         element: ".nav-icon-back",
         text: "Tap here to go back.",
         box: "8rem auto auto 1rem",
-        arrow: "2.5rem top"
-    },
-    {
-        element: ".nav-icon-back",
-        text: "Tap here to go back.",
-        box: "8rem auto auto 1rem",
-        arrow: "2.5rem top"
+        arrow: "2.5rem top",
+        page: "/settings/"
     },
     {
         element: ".dropdown-container",
         text: "Tap a category to open it.",
         box: "9rem 1rem auto 1rem",
-        arrow: "50% bottom"
+        arrow: "50% bottom",
+        page: "/"
     },
     {
         element: ".dropdown-container, .button-archive",
         text: "Swipe an item left and press the button to archive it.",
         box: "9rem 1rem auto 1rem",
-        arrow: "50% bottom"
+        arrow: "50% bottom",
+        page: "/"
     }
 ];
 
 if(tutorialProgress != -1) {
+    if(tutorialStructure[tutorialProgress].page != window.location.pathname) {
+        window.location.pathname = tutorialStructure[tutorialProgress].page;
+    }
+
     startTutorial();
 }
 
