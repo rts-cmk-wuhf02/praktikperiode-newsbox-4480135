@@ -1,3 +1,9 @@
+// Dark mode
+if(localStorage.getItem("dark-mode") == "true") {
+    document.body.classList.add("dark-mode");
+}
+
+// Tutorial
 let tutorialTextDOM;
 let tutorialTextSpanDOM;
 let tutorialTextArrowDOM;
