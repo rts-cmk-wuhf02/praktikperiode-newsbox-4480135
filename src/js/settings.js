@@ -7,6 +7,7 @@ let categoryOrder = [
     "Sports",
 ];
 if(localStorage.getItem("category-order") != undefined) categoryOrder = JSON.parse(localStorage.getItem("category-order"));
+let options = JSON.parse(localStorage.getItem("options")) || [];
 
 
 // Toggle buttons
@@ -14,19 +15,42 @@ const togglesDOM = document.querySelectorAll(".option-checkbox");
 
 togglesDOM.forEach(function(e) {
     // Set value based on saved data
-    if(localStorage.getItem(e.id) == "true") {
-        e.click();
-    } else if(!localStorage.getItem(e.id)) {
-        localStorage.setItem(e.id, "true");
-        e.click();
+    let url = e.getAttribute("url");
+    for(let i = 0; i < options.length; i++) {
+        if(options[i].url == url) {
+            if(options[i].enabled != false) {
+                e.click();
+            }
+            break;
+        }
     }
+
+
 
     // Change category order
     e.parentNode.classList.add("order-" + categoryOrder.indexOf(e.parentNode.querySelector(".card-title").innerHTML));
 
 
     e.addEventListener("change", function(e) {
-        localStorage.setItem(e.target.id, e.target.checked);
+        let url = e.target.getAttribute("url");
+        let foundItem = false;
+
+        for(let i = 0; i < options.length; i++) {
+            if(options[i].url == url) {
+                options[i].enabled = e.target.checked;
+                foundItem = true;
+                break;
+            }
+        }
+
+        if(!foundItem) {
+            options.push({
+                url: url,
+                enabled: e.target.checked
+            });
+        }
+
+        localStorage.setItem("options", JSON.stringify(options));
     });
 });
 

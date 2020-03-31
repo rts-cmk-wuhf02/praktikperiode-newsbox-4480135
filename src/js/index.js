@@ -17,31 +17,13 @@ const templateNewsItemDOM = document.querySelector("#template-news-item");
 
 
 // Fetch news data
-let optionEurope = localStorage.getItem("option-europe");
-let optionBusiness = localStorage.getItem("option-business");
-let optionHealth = localStorage.getItem("option-health");
-let optionTravel = localStorage.getItem("option-travel");
-let optionSport = localStorage.getItem("option-sport");
+let options = JSON.parse(localStorage.getItem("options"));
 
-if(optionEurope != "false") {
-    fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml");
-}
-
-if(optionBusiness != "false") {
-    fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Business.xml");
-}
-
-if(optionHealth != "false") {
-    fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Health.xml");
-}
-
-if(optionTravel != "false") {
-    fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml");
-}
-
-if(optionSport != "false") {
-    fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml");
-}
+options.forEach(function(e) {
+    if(e.enabled != false) {
+        fetchData(e.url);
+    }
+});
 
 
 function fetchData(url) {
@@ -74,76 +56,23 @@ function refreshNews() {
 
 
     
-    let passes = [true, true, true, true, true];
+    let passes = [];
+    for(let i = 0; i < options.length; i++) {
+        passes.push(true);
 
-    if(optionEurope != "false") {
-        passes[0] = false;
+        if(options[i].enabled != false) {
+            passes[i] = false;
 
-        fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml").then(function() {
-            passes[0] = true;
+            fetchData(options[i].url).then(function() {
+                passes[i] = true;
 
-            if(passes.find(function(e) {
-                return e == false;
-            }) == undefined) {
-                hideRefresh();
-            }
-        });
-    }
-    
-    if(optionBusiness != "false") {
-        passes[1] = false;
-
-        fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Business.xml").then(function() {
-            passes[1] = true;
-
-            if(passes.find(function(e) {
-                return e == false;
-            }) == undefined) {
-                hideRefresh();
-            }
-        });
-    }
-    
-    if(optionHealth != "false") {
-        passes[2] = false;
-
-        fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Health.xml").then(function() {
-            passes[2] = true;
-
-            if(passes.find(function(e) {
-                return e == false;
-            }) == undefined) {
-                hideRefresh();
-            }
-        });
-    }
-    
-    if(optionTravel != "false") {
-        passes[3] = false;
-
-        fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml").then(function() {
-            passes[3] = true;
-
-            if(passes.find(function(e) {
-                return e == false;
-            }) == undefined) {
-                hideRefresh();
-            }
-        });
-    }
-    
-    if(optionSport != "false") {
-        passes[4] = false;
-
-        fetchData("https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml").then(function() {
-            passes[4] = true;
-
-            if(passes.find(function(e) {
-                return e == false;
-            }) == undefined) {
-                hideRefresh();
-            }
-        });
+                if(passes.find(function(e) {
+                    return e == false;
+                }) == undefined) {
+                    hideRefresh();
+                }
+            });
+        }
     }
     
     document.body.classList.remove("refreshing");
