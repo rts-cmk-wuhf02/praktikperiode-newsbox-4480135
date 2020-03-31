@@ -13,55 +13,7 @@
             <p class="sub-title">Categories</p>
 
             <section class="settings-container bg-white my-16 shadow flex flex-col overflow-hidden">
-                <article class="option-wrapper">
-                    <p class="card-title">Europe</p>
-                    <input class="option-checkbox" type="checkbox" id="option-europe" url="https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml" hidden>
-                    <label for="option-europe" class="h-full">
-                        <div class="toggle-input">
-                            <div class="toggle-input-circle"></div>
-                        </div>
-                    </label>
-                </article>
-
-                <article class="option-wrapper">
-                    <p class="card-title">Health</p>
-                    <input class="option-checkbox" type="checkbox" id="option-health" url="https://rss.nytimes.com/services/xml/rss/nyt/Health.xml" hidden>
-                    <label for="option-health" class="h-full">
-                        <div class="toggle-input">
-                            <div class="toggle-input-circle"></div>
-                        </div>
-                    </label>
-                </article>
-
-                <article class="option-wrapper">
-                    <p class="card-title">Sports</p>
-                    <input class="option-checkbox" type="checkbox" id="option-sport" url="https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml" hidden>
-                    <label for="option-sport" class="h-full">
-                        <div class="toggle-input">
-                            <div class="toggle-input-circle"></div>
-                        </div>
-                    </label>
-                </article>
-
-                <article class="option-wrapper">
-                    <p class="card-title">Business</p>
-                    <input class="option-checkbox" type="checkbox" id="option-business" url="https://rss.nytimes.com/services/xml/rss/nyt/Business.xml" hidden>
-                    <label for="option-business" class="h-full">
-                        <div class="toggle-input">
-                            <div class="toggle-input-circle"></div>
-                        </div>
-                    </label>
-                </article>
-
-                <article class="option-wrapper">
-                    <p class="card-title">Travel</p>
-                    <input class="option-checkbox" type="checkbox" id="option-travel" url="https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml" hidden>
-                    <label for="option-travel" class="h-full">
-                        <div class="toggle-input">
-                            <div class="toggle-input-circle"></div>
-                        </div>
-                    </label>
-                </article>
+                
             </section>
 
             <button class="card-copy dark-mode-button border border-gray-600 p-4 rounded-full uppercase mb-4">Toggle Dark Mode</button>
@@ -69,6 +21,20 @@
             <p class="text-gray-600 font-light">Version 1.0</p>
         </main>
     </div>
+
+
+    <template class="template-option-wrapper">
+        <article class="option-wrapper">
+            <p class="card-title"></p>
+            <input class="option-checkbox" type="checkbox" id="" url="" hidden>
+            <label for="" class="option-label h-full">
+                <div class="toggle-input">
+                    <div class="toggle-input-circle"></div>
+                </div>
+            </label>
+        </article>
+    </template>
+
 
     <script src="/assets/js/settings.js"></script>
     <script src="/assets/js/tutorial.js"></script>

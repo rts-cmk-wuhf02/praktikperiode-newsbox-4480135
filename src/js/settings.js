@@ -28,6 +28,22 @@ let options = [
 if(localStorage.getItem("options")) options = JSON.parse(localStorage.getItem("options"));
 
 
+// Add options to settings page
+const settingsContainerDOM = document.querySelector(".settings-container");
+const templateOptionWrapperDOM = document.querySelector(".template-option-wrapper");
+
+for(let i = 0; i < options.length; i++) {
+    const optionWrapperElement = templateOptionWrapperDOM.content.cloneNode(true);
+    
+    optionWrapperElement.querySelector(".card-title").innerText = options[i].name;
+    optionWrapperElement.querySelector(".option-checkbox").setAttribute("url", options[i].url);
+    optionWrapperElement.querySelector(".option-checkbox").id = "option-" + options[i].name;
+    optionWrapperElement.querySelector(".option-label").setAttribute("for", "option-" + options[i].name);
+
+    settingsContainerDOM.appendChild(optionWrapperElement);
+}
+
+
 // Toggle buttons
 const togglesDOM = document.querySelectorAll(".option-checkbox");
 
@@ -85,8 +101,6 @@ darkModeBtnDOM.addEventListener("click", function() {
 });
 
 // Move options around
-const settingsContainerDOM = document.querySelector(".settings-container");
-
 let offsetPosY = 0;
 let curPosY = 0;
 let trackedElement = null;
