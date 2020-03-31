@@ -1,35 +1,50 @@
-// Category order
-let categoryOrder = [
-    "Europe",
-    "Business",
-    "Health",
-    "Travel",
-    "Sports",
+let options = [
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml",
+        enabled: true,
+        name: "Europe"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Health.xml",
+        enabled: true,
+        name: "Health"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml",
+        enabled: true,
+        name: "Sports"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+        enabled: true,
+        name: "Business"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml",
+        enabled: true,
+        name: "Travel"
+    }
 ];
-if(localStorage.getItem("category-order") != undefined) categoryOrder = JSON.parse(localStorage.getItem("category-order"));
-let options = JSON.parse(localStorage.getItem("options")) || [];
+if(localStorage.getItem("options")) options = JSON.parse(localStorage.getItem("options"));
 
 
 // Toggle buttons
 const togglesDOM = document.querySelectorAll(".option-checkbox");
 
 togglesDOM.forEach(function(e) {
-    // Set value based on saved data
     let url = e.getAttribute("url");
     for(let i = 0; i < options.length; i++) {
         if(options[i].url == url) {
+            // Set value based on saved data
             if(options[i].enabled != false) {
                 e.click();
             }
+
+            // Change category order
+            e.parentNode.classList.add("order-" + i);
             break;
         }
     }
-
-
-
-    // Change category order
-    e.parentNode.classList.add("order-" + categoryOrder.indexOf(e.parentNode.querySelector(".card-title").innerHTML));
-
 
     e.addEventListener("change", function(e) {
         let url = e.target.getAttribute("url");
@@ -46,7 +61,8 @@ togglesDOM.forEach(function(e) {
         if(!foundItem) {
             options.push({
                 url: url,
-                enabled: e.target.checked
+                enabled: e.target.checked,
+                name: e.target.getAttribute("url")
             });
         }
 
@@ -134,9 +150,9 @@ settingsContainerDOM.addEventListener("touchend", function(e) {
         trackedElement.classList.replace(trackedElement.classList[1], "order-" + newOrder);
 
         // Change saved order
-        let name = categoryOrder.splice(firstOrder, 1);
-        categoryOrder.splice(newOrder, 0, name[0]);
-        localStorage.setItem("category-order", JSON.stringify(categoryOrder));
+        let item = options.splice(firstOrder, 1);
+        options.splice(newOrder, 0, item[0]);
+        localStorage.setItem("options", JSON.stringify(options));
 
         
         // Reset values

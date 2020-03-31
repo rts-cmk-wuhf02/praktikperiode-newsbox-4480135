@@ -1,15 +1,5 @@
 isIndexPage = true;
 
-// Category order
-let categoryOrder = [
-    "Europe",
-    "Business",
-    "Health",
-    "Travel",
-    "Sports",
-];
-if(localStorage.getItem("category-order") != undefined) categoryOrder = JSON.parse(localStorage.getItem("category-order"));
-
 // DOM
 const dropdownContainerDOM = document.querySelector(".dropdown-container");
 const templateCategoryDropdownDOM = document.querySelector("#template-category-dropdown");
@@ -17,7 +7,34 @@ const templateNewsItemDOM = document.querySelector("#template-news-item");
 
 
 // Fetch news data
-let options = JSON.parse(localStorage.getItem("options"));
+let options = [
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Europe.xml",
+        enabled: true,
+        name: "Europe"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Health.xml",
+        enabled: true,
+        name: "Health"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Sports.xml",
+        enabled: true,
+        name: "Sports"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml",
+        enabled: true,
+        name: "Business"
+    },
+    {
+        url: "https://rss.nytimes.com/services/xml/rss/nyt/Travel.xml",
+        enabled: true,
+        name: "Travel"
+    }
+];
+if(localStorage.getItem("options")) options = JSON.parse(localStorage.getItem("options"));
 
 options.forEach(function(e) {
     if(e.enabled != false) {
@@ -113,7 +130,7 @@ function showData(data) {
     
     dropdownContainerDOM.appendChild(dropdownClone);
     let element = dropdownContainerDOM.querySelector(".category-dropdown-wrapper:last-child");
-    element.classList.add("order-" + categoryOrder.indexOf(categoryTitle));
+    element.classList.add("order-" + options.findIndex(e => e.name == categoryTitle));
     
     addDropdownListener(element);
 
