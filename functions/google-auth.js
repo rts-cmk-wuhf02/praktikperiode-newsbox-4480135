@@ -25,12 +25,15 @@ passport.use(new GoogleStrategy({
 passport.initialize();
 passport.session();
 
-exports.handler = async (event, context) => {
+exports.handler = async (event, context, callback) => {
     let returnVal = passport.authenticate("google", { failureRedirect: "/settings" });
     cookie.serialize("google-auth", returnVal, {
         httpOnly: true,
         maxAge: 60 * 60 * 24 // 1 day
     });
-    console.log(returnVal);
-    return { body: returnVal };
+    
+    callback(null, {
+        statusCode: 200,
+        body: "Test"
+    });
 };
