@@ -31,5 +31,5 @@ exports.handler = async (event, context) => {
         httpOnly: true,
         maxAge: 60 * 60 * 24 // 1 day
     });
-    return { body: returnVal };
+    return { };
 };
