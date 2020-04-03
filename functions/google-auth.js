@@ -26,17 +26,12 @@ passport.initialize();
 passport.session();
 
 exports.handler = async (event, context, callback) => {
-    let returnVal = passport.authenticate("google", { failureRedirect: "/settings" });
-    let outCookie = cookie.serialize("google-auth", returnVal, {
-        httpOnly: true,
-        maxAge: 60 * 60 * 24 // 1 day
+    let x = passport.authenticate("google", function(e) {
+        console.log(e);
     });
-    
+
     callback(null, {
         statusCode: 200,
-        headers: {
-            "Set-Cookie": outCookie
-        },
-        body: "Output: " + returnVal
+        body: "Output: " + x
     });
 };
