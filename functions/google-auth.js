@@ -4,9 +4,6 @@ const serverless = require("serverless-http");
 const express = require('express');
 const cookieParser = require("cookie-parser");
 
-exports.handler = serverless(app);
-
-
 const app = express();
 
 app.use(cookieParser());
@@ -56,3 +53,6 @@ app.get(`https://distracted-montalcini-ba1430.netlify.com/auth/google/callback`,
     passport.authenticate('google', { failureRedirect: '/', session: false }),
     handleCallback(),
 );
+
+
+exports.handler = serverless(app);
