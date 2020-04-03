@@ -1,14 +1,28 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google").Strategy;
-const cookie = require("cookie");
+const serverless = require("serverless-http");
+const express = require('express');
+const cookieParser = require("cookie-parser");
 
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
-  
-passport.deserializeUser(function(obj, done) {
-    done(null, obj);
-});
+exports.handler = serverless(app);
+
+
+const app = express();
+
+app.use(cookieParser());
+app.use(
+    sessions({
+        cookieName: "session",
+        secret: process.env.SESSION_SECRET,
+        cookie: {
+            ephemeral: false,
+            secure: false
+        }
+    })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 passport.use(new GoogleStrategy({
         returnURL: 'https://distracted-montalcini-ba1430.netlify.com/settings',
@@ -16,20 +30,29 @@ passport.use(new GoogleStrategy({
     },
     function(identifier, profile, done) {
         process.nextTick(function () {
-            profile.identifier = identifier;
+        
+        profile.identifier = identifier;
             return done(null, profile);
         });
     }
 ));
 
-passport.initialize();
-passport.session();
+passport.serializeUser(
+    (user, cb) => cb(user ? null : "null user", user)
+);
 
-exports.handler = async (event, context, callback) => {
-    //passport.authenticate("google");
-    console.log("APPARENTLY THIS IS SUPPOSED TO WORK.");
-    callback(null, {
-        statusCode: 200,
-        body: "Testing..."
-    });
+passport.deserializeUser(
+    (user, cb) => cb(user ? null : "null user", user)
+);
+
+
+const handleCallback = () => (req, res) => {
+    res.cookie('jwt', req.user.jwt, { httpOnly: true, COOKIE_SECURE })
+        .redirect('/');
 };
+  
+app.get(`${ENDPOINT}/auth/google`, passport.authenticate('google', { session: false }));
+app.get(`${ENDPOINT}/auth/google/callback`,
+    passport.authenticate('google', { failureRedirect: '/', session: false }),
+    handleCallback(),
+);
