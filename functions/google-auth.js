@@ -37,8 +37,8 @@ const handleCallback = () => (req, res) => {
         .redirect('/');
 };
   
-app.get(`https://distracted-montalcini-ba1430.netlify.com/auth/google`, passport.authenticate('google', { session: false }));
-app.get(`https://distracted-montalcini-ba1430.netlify.com/auth/google/callback`,
+app.get(`https://distracted-montalcini-ba1430.netlify.com/.netlify/functions/google-auth`, passport.authenticate('google', { session: false }));
+app.get(`https://distracted-montalcini-ba1430.netlify.com/.netlify/functions/google-auth/callback`,
     passport.authenticate('google', { failureRedirect: '/', session: false }),
     handleCallback(),
 );
