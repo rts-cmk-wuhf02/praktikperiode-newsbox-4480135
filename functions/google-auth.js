@@ -7,17 +7,6 @@ const cookieParser = require("cookie-parser");
 const app = express();
 
 app.use(cookieParser());
-app.use(
-    sessions({
-        cookieName: "session",
-        secret: process.env.SESSION_SECRET,
-        cookie: {
-            ephemeral: false,
-            secure: false
-        }
-    })
-);
-
 app.use(passport.initialize());
 app.use(passport.session());
 
