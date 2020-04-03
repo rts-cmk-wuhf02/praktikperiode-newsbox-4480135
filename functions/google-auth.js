@@ -1,18 +1,18 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google").Strategy;
+const GoogleStrategy = require("passport-google-oauth2").Strategy;
 
 passport.initialize();
 passport.session();
 
 passport.use(new GoogleStrategy({
-        returnURL: 'https://distracted-montalcini-ba1430.netlify.com/settings',
-        realm: 'https://distracted-montalcini-ba1430.netlify.com/'
+        clientID:     GOOGLE_CLIENT_ID,
+        clientSecret: GOOGLE_CLIENT_SECRET,
+        callbackURL: "https://distracted-montalcini-ba1430.netlify.com/.netlify/functions/callback",
+        passReqToCallback   : true
     },
-    function(identifier, profile, done) {
-        process.nextTick(function () {
-        
-        profile.identifier = identifier;
-            return done(null, profile);
+    function(request, accessToken, refreshToken, profile, done) {
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+            return done(err, user);
         });
     }
 ));
