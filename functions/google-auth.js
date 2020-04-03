@@ -26,18 +26,10 @@ passport.initialize();
 passport.session();
 
 exports.handler = async (event, context, callback) => {
-    let x = c();
-
+    //passport.authenticate("google");
+    console.log("APPARENTLY THIS IS SUPPOSED TO WORK.");
     callback(null, {
         statusCode: 200,
-        body: "Output: " + x
+        body: "Testing..."
     });
 };
-
-function c() {
-    let y = undefined;
-    passport.authenticate("google", function(e) {
-        y = e;
-    });
-    return y;
-}
