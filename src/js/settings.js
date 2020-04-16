@@ -100,17 +100,22 @@ darkModeBtnDOM.addEventListener("click", function() {
     }
 });
 
-// Signup
+// Sign up and sign out
 const signUpBtnDOM = document.querySelector(".sign-up-button");
-
-signUpBtnDOM.addEventListener("click", function() {
-    window.location.href = "https://distracted-montalcini-ba1430.netlify.app/api/auth/github";
-});
-
-console.log(document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1"))
+const signOutBtnDOM = document.querySelector(".sign-out-button");
 
 if(document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1") != "") {
     signUpBtnDOM.remove();
+
+    signOutBtnDOM.addEventListener("click", function() {
+        document.cookie.replace(/(;|^)(jwt=([^;]*).)/, "$1"); // Removes cookie
+    });
+} else {
+    signUpBtnDOM.addEventListener("click", function() {
+        window.location.href = "https://distracted-montalcini-ba1430.netlify.app/api/auth/github";
+    });
+
+    signOutBtnDOM.remove();
 }
 
 
