@@ -1,4 +1,3 @@
-// lambda/auth.js
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
@@ -8,8 +7,8 @@ const serverless = require('serverless-http');
 require('./utils/auth');
 
 const {
-  COOKIE_SECURE,
-  ENDPOINT,
+    COOKIE_SECURE,
+    ENDPOINT,
 } = require('./utils/config');
 
 const app = express();
@@ -20,22 +19,24 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 const handleCallback = () => (req, res) => {
-  res
-    .cookie('jwt', req.user.jwt, { httpOnly: true, COOKIE_SECURE })
-    .redirect('/');
+    res.cookie('jwt', req.user.jwt, { httpOnly: true, COOKIE_SECURE }).redirect('/');
 };
 
 app.get(`${ENDPOINT}/auth/github`, passport.authenticate('github', { session: false }));
 app.get(
-  `${ENDPOINT}/auth/github/callback`,
-  passport.authenticate('github', { failureRedirect: '/', session: false }),
-  handleCallback(),
+    `${ENDPOINT}/auth/github/callback`,
+    passport.authenticate('github', { failureRedirect: '/', session: false }),
+    handleCallback(),
 );
 
 app.get(
-  `${ENDPOINT}/auth/status`,
-  passport.authenticate('jwt', { session: false }),
-  (req, res) => res.json({ email: req.user.email }),
+    `${ENDPOINT}/auth/status`,
+    passport.authenticate('jwt', { session: false }),
+    (req, res) => res.json({ email: req.user.email }),
 );
+
+
+console.log(`Completed Initialization`);
+
 
 module.exports.handler = serverless(app);

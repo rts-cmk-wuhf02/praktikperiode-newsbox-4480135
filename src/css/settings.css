@@ -85,6 +85,13 @@ body {
     font-size: 1.2rem;
 }
 
+.login-button {
+    font-family: "Barlow";
+    letter-spacing: 3px;
+    font-size: 1.2rem;
+    min-width: 10rem;
+}
+
 .dark-mode-button:focus {
     outline: none;
 }

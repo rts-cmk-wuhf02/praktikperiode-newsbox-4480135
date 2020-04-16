@@ -100,6 +100,18 @@ darkModeBtnDOM.addEventListener("click", function() {
     }
 });
 
+// Signup
+const signUpBtnDOM = document.querySelector(".sign-up-button");
+
+signUpBtnDOM.addEventListener("click", function() {
+    window.location.href = "https://distracted-montalcini-ba1430.netlify.app/api/auth/github";
+});
+
+if(document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1") != "") {
+    signUpBtnDOM.remove();
+}
+
+
 // Move options around
 let offsetPosY = 0;
 let curPosY = 0;
