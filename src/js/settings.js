@@ -108,7 +108,7 @@ if(document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1") !
     signUpBtnDOM.remove();
 
     signOutBtnDOM.addEventListener("click", function() {
-        document.cookie = document.cookie.replace(/(;|^)(jwt=([^;]*).)/, "$1"); // Removes cookie
+        document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     });
 } else {
     signUpBtnDOM.addEventListener("click", function() {
