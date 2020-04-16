@@ -107,6 +107,8 @@ signUpBtnDOM.addEventListener("click", function() {
     window.location.href = "https://distracted-montalcini-ba1430.netlify.app/api/auth/github";
 });
 
+console.log(document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1"))
+
 if(document.cookie.replace(/(?:(?:^|.*;\s*)jwt\s*\=\s*([^;]*).*$)|^.*$/, "$1") != "") {
     signUpBtnDOM.remove();
 }
