@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(passport.initialize());
 
 const handleCallback = () => (req, res) => {
-    res.cookie('jwt', req.user.jwt, { httpOnly: false, domain: `${BASE_URL}`, path: "/", COOKIE_SECURE }).redirect('/');
+    res.cookie('jwt', req.user.jwt, { httpOnly: false, path: "/", COOKIE_SECURE }).redirect('/');
 };
 
 app.get(`${ENDPOINT}/auth/github`, passport.authenticate('github', { session: false }));
